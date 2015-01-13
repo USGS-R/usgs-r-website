@@ -4,11 +4,14 @@
 @white:#fff;
 @darkBlueBorder:1px solid rgb(27,45,21);
 @whiteBorder:1px solid #fff;
+@highlight:rgb(229,93,70);
 
 
 *{margin:0; padding:0;}
 
-a{text-decoration:none;}
+a{
+    text-decoration:none;
+    color:@primaryColor;}
 
 body,
 html{
@@ -18,6 +21,11 @@ html{
 #usgscolorband,
 #usgsfooter,
 nav{display:none;}
+
+.page-title-h1{
+    font-family:@fontFamily;
+    font-size:2em;
+    margin:-10px 0 10px 0;}
 
 #mobile-nav{
     background:@primaryColor;
@@ -133,6 +141,61 @@ article{
     font-size:.8em;
     font-weight:600;
     }
+    
+.box p a:hover{
+    color:@highlight;
+    }
+    
+/*========content class css========*/
+
+.content{
+    font-family:@fontFamily;
+    font-weight:600;}
+    
+.content h3{
+    padding:5px 0 5px 10px;
+    margin-bottom:-5px;}
+    
+.content ul{
+    list-style:square;
+    padding:5px 5px 5px 30px;}
+    
+.content ul li{
+    margin-bottom:10px;}
+    
+.content ul li a{
+    color:@primaryColor;
+    font-weight:600;}
+    
+.content ul li a:hover{
+    color:@highlight;}
+    
+.content p{
+    font-weight:400;
+    padding:0 5px 5px 5px;
+    text-indent:1.5em;}
+    
+/*========contact css========*/
+
+#contact-form{
+    min-height:100px;
+    padding:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,.3);
+    text-align:center;}
+    
+#contact-form input,
+#contact-form textarea{
+    width:99%;
+    height:30px;
+    padding-left:1%;
+    border-radius:5px;
+    background:@white;
+    border:1px solid rgb(190,190,190);
+    font-size:1em;
+    margin-bottom:10px;}
+    
+#contact-form textarea{
+    min-height:100px;}
     
 @media screen and (min-width:686px){
     
