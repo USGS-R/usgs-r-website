@@ -143,15 +143,25 @@
             <h3>How to use GRAN?<a id="use_gran"></a></h3>
             
             <p>
-                There are two ways to take advantage of GRAN tools. 
+                There are two ways to take advantage of GRAN tools.
 				
-				1. When installing a package, add a `repo` argument to the install.packages function:
-				<pre>
-					install.packages("EflowStats", repos="http://owi.usgs.gov")
-				</pre>
+				<ol>
+				<li>When installing a package, add a 'repo' argument to the install.packages function:<br><br>
+<pre>
+install.packages("EflowStats", repos="http://owi.usgs.gov")
+</pre>
+<br><br>
+				</li>
+				<li>
+				Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (in Windows, it is typically in 
 				
-				2. 
+				Then add:
+<pre>
+options(repos=c(getOption('repos'), USGS='http://owi.usgs.gov/R'))`
+</pre>
 				
+				</li>
+				</ol>
             </p>
             
         </section>
