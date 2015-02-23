@@ -144,24 +144,28 @@
             
             <p>
                 There are two ways to take advantage of GRAN tools.
+                
+                <ol class="granNumberList">
+                
+                	<li>When installing a package, add a 'repo' argument to the install.packages function:</li>
 				
-				<ol>
-				<li>When installing a package, add a 'repo' argument to the install.packages function:<br><br>
-<pre>
-install.packages("EflowStats", repos="http://owi.usgs.gov")
+<pre class="language-Rcode">
+<code class="language-Rcode">
+install.packages(<span class="string">"EflowStats"</span>, <span class="variable">repos</span><span class="punctuation">=</span><span class="string">"http://owi.usgs.gov"</span>)
+	</code>
 </pre>
-<br><br>
-				</li>
-				<li>
-				Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (in Windows, it is typically in 
+
 				
-				Then add:
-<pre>
-options(repos=c(getOption('repos'), USGS='http://owi.usgs.gov/R'))`
+				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (in Windows, it is typically in</li>
+				
+				<p>Then add:</p>
+<pre class="language-Rcode" >
+<code class="language-Rcode">
+options(<span class="variable">repos</span><span class="punctuation">=</span>c(<span class="variable">getOption</span>(<span class="string">'repos'</span>), <span class="variable">USGS</span><span class="punctuation">=</span><span class="string">'http://owi.usgs.gov/R'</span>))`
+	</code>
 </pre>
-				
-				</li>
 				</ol>
+				
             </p>
             
         </section>

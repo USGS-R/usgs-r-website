@@ -5,7 +5,12 @@
 @darkBlueBorder:1px solid rgb(27,45,21);
 @whiteBorder:1px solid #fff;
 @highlight:rgb(229,93,70);
-
+@rCodeVariables:#ed6a43;
+@rCodeStrings:#183691;
+@rCodeComments:#969896;
+@rCodeBg:#f7f7f7;
+@rCodeBasicColor:#333333;
+@rCodePunctuations:#a71d5d;
 
 *{margin:0; padding:0;}
 
@@ -234,6 +239,63 @@ p.nextToLink{
     
 #contact-form textarea{
     min-height:100px;}
+    
+/*========gran html========*/  
+
+.granNumberList{
+    margin-left:40px;
+    }
+    
+.granNumberList li{
+    margin-left:-5px;
+    }
+
+pre{
+    overflow: auto;
+color: white;
+background: @rCodeBg;
+padding: 0;
+-moz-tab-size: 2;
+-o-tab-size: 2;
+tab-size: 2;
+-ms-word-break: break-word;
+word-break: break-word;
+word-break: break-word;
+-webkit-hyphens: none;
+-moz-hyphens: none;
+-ms-hyphens: none;
+hyphens: none;
+position: relative;
+margin:15px 15px 15px -15px;
+height:100px;
+border-radius:5px;
+    }
+    
+pre code{
+font-family: 'Source Code Pro', Menlo, Consolas, Monaco, monospace;
+font-size: 0.9rem;
+background: none;
+padding: 15px;
+white-space: pre;
+overflow: auto;
+display: block;
+	}
+	
+.language-Rcode{
+    color:@rCodeBasicColor;
+    }
+    
+.string{
+    color:@rCodeStrings;
+    }
+    
+.variable{
+    color:@rCodeVariables;
+    }
+    
+.punctuation{
+    color:@rCodePunctuations;
+    }
     
 @media screen and (min-width:686px){
     
