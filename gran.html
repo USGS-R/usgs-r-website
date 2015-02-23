@@ -178,10 +178,15 @@ options(repos=c(getOption('repos'), USGS='http://owi.usgs.gov/R'))`
                 which should be completed before submitting a package to GRAN. Assuming a package is compliant, follow the steps for submission below:
                           </p>
   
-            <ol>Host your full package code on github.com (preferably with the USGS-R organization)</ol>
-            <ol>Cut a release on your </ol>
-            <ol>stuff here</ol>
-            <ol>stuff here</ol>
+            <ol>
+                <il>Obtain peer review of package using JIRA code (...more here...)</il>
+            <il>Host your full package code on github.com (preferably within the USGS-R organization)</il>
+            <il><a href="https://help.github.com/articles/creating-releases/" target="_blank">Create a tagged release</a> of a stable version of your package on github.com</il>
+            <il>Fork the USGS-R package <code>grantools</code> to your personal github account.</il>
+            <il>Add your package location and name (using the format <code>repository/packageName</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </il>
+            <il>Create a pull request between your personal fork of grantools and the USGS-R version of grantools</il>
+            <il>Receive a notification once your package has been added (usually within one day).</il>
+            </ol>
             
         </section>
         
