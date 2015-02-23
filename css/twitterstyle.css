@@ -8,7 +8,6 @@ html {
 }
 
 body {
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.4;
   color: #666;
   min-width: 960px;
@@ -32,14 +31,6 @@ h2 {
   color: rgb(0,51,102);
 }
 
-a:link, a:visited {
-  color: rgb(0,51,102);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 
 #wrapper {
   position: relative;
@@ -72,7 +63,6 @@ a:hover {
 }
 
 #main p {
-  font-size: 11px;
   line-height: 2;
 }
 
