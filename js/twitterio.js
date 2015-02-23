@@ -64,7 +64,7 @@
         //var uri = "https://api.github.com/orgs/usgs-r/repos?callback=?"
         //        + "&per_page=9"
         //        + "&page="+page;
-        var uri = "js/twitterio.json";
+        var uri = "js/repos.json";
 
         $.getJSON(uri, function (result) {
         //  if (result.data && result.data.length > 0) {
@@ -126,7 +126,7 @@
         //var membersUri = "https://api.github.com/orgs/usgs-r/members?callback=?"
         //  + "&per_page=8"
         //  + "&page="+page;
-        var membersUri = "js/twitterio.json";
+        var membersUri = "js/repos.json";
         
         $.getJSON(membersUri, function (result) {
           if (result.data && result.data.length > 0) {
