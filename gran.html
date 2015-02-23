@@ -177,8 +177,21 @@ options(<span class="variable">repos</span><span class="punctuation">=</span>c(<
             <h3>How do I add my package to GRAN?<a id="add_package"></a></h3>
             
             <p>
-                TODO: add text
-            </p>
+                Developers that have an R package that would be useful to others within USGS are encouraged to use GRAN to distribute those packages. 
+                There are a minimum number of required steps before a package is GRAN-ready (see <a href="#gran_policy">policy</a>), 
+                which should be completed before submitting a package to GRAN. Assuming a package is compliant, follow the steps for submission below:
+                          </p>
+  
+            <ol>
+                <li>Obtain, document, and address peer review of package using the <a href="https://my.usgs.gov/jira/browse/GITPILOT/" target="_blank">my.usgs JIRA system</a>. </li>
+                <li>Host your full package code on github.com (preferably within the USGS-R organization)</li>
+                <li><a href="https://help.github.com/articles/creating-releases/" target="_blank">Create a tagged release</a> of a stable version of your package on github.com</li>
+                <li>Ensure package builds and passes checks with no warnings</li>
+                <li><a href="https://help.github.com/articles/fork-a-repo/" target="_blank">Fork</a> the USGS-R <code>grantools</code> to your personal github account.</li>
+                <li>Add your package location and name (using the format <code>repository/packageName</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </li>
+                <li>Create a pull request between your personal fork of grantools and the USGS-R version of grantools</li>
+                <il>Receive a notification once your package has been added (usually within one day).</li>
+            </ol>
             
         </section>
         
