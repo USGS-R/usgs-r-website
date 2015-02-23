@@ -61,13 +61,18 @@
         repos = repos || [];
         page = page || 1;
 
-        var uri = "https://api.github.com/orgs/usgs-r/repos?callback=?"
-                + "&per_page=9"
-                + "&page="+page;
+        //var uri = "https://api.github.com/orgs/usgs-r/repos?callback=?"
+        //        + "&per_page=9"
+        //        + "&page="+page;
+        var uri = "js/repos.json";
+        
+        if(page > 1){
+            return;
+        }
 
         $.getJSON(uri, function (result) {
         //  if (result.data && result.data.length > 0) {
-            repos = repos.concat(result.data);
+            repos = result;
           //  addRepos(repos, page + 1);
           //}
           //else {
@@ -122,13 +127,18 @@
       function getNumMembers(page, numMembers) {
         var page = page || 1;
         var numMembers = numMembers || 0;
-        var membersUri = "https://api.github.com/orgs/usgs-r/members?callback=?"
-          + "&per_page=8"
-          + "&page="+page;
-
+        //var membersUri = "https://api.github.com/orgs/usgs-r/members?callback=?"
+        //  + "&per_page=8"
+        //  + "&page="+page;
+        var membersUri = "js/repos.json";
+        
+        if(page > 1){
+            return;
+        }
+        
         $.getJSON(membersUri, function (result) {
           if (result.data && result.data.length > 0) {
-            numMembers += result.data.length;
+            numMembers += result.length;
             getNumMembers(page+1, numMembers);
           } else {
             $(function () {
