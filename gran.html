@@ -143,26 +143,24 @@
             <h3>How to use GRAN?</h3>
             
             <p>
-                There are two ways to take advantage of GRAN tools.
+                There are two ways to take advantage of GRAN tools.<br><br>
                 
                 <ol class="granNumberList">
-                
-                	<li>When installing a package, add a 'repo' argument to the install.packages function:</li>
 				
-<pre class="language-Rcode">
+				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. The following command in R will run a script to update your Rprofile file:</li>
+				
+
+<pre class="language-Rcode" >
 <code class="language-Rcode">
-install.packages(<span class="string">"EflowStats"</span>, <span class="variable">repos</span><span class="punctuation">=</span><span class="string">"http://owi.usgs.gov"</span>)
+source(<span class="string">'http://owi.usgs.gov/R/add_gran_repo.R'</span>))
 	</code>
 </pre>
 
-				
-				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (on a Windows OS, it is typically in C:\Program Files\R\R-X.X.X\etc, on a Mac OS, it is typically found in ~/.Rprofile (if the file does not exist, create one using a text editor)</li>
-				
-				<p>Then add:
-				</p>
-<pre class="language-Rcode" >
+					<li>When installing a package, add a 'repo' argument to the install.packages function:</li>
+									
+<pre class="language-Rcode">
 <code class="language-Rcode">
-options(<span class="variable">repos</span><span class="punctuation">=</span>c(<span class="variable">getOption</span>(<span class="string">'repos'</span>), <span class="variable">USGS</span><span class="punctuation">=</span><span class="string">'http://owi.usgs.gov/R'</span>))
+install.packages(<span class="string">"EflowStats"</span>, <span class="variable">repos</span><span class="punctuation">=</span><span class="string">"http://owi.usgs.gov"</span>)
 	</code>
 </pre>
 				</ol>
@@ -206,8 +204,23 @@ options(<span class="variable">repos</span><span class="punctuation">=</span>c(<
             <h3>What is the GRAN policy?<a id="gran_policy"></a></h3>
             
             <p>
-                TODO: add text
-            </p>
+            <ul>
+                <li>Required: Active tool maintainer with *@usgs.gov email address
+If a maintainer becomes inactive, the package will be removed</li>
+                <li>Required: Code must be on Github USGS-R repository to facilitate the automation of tool builds, checks, and releases:</li>
+                <ul>
+                <li>Recommended: Continuous integration</li> 
+                <li>Required: Each GRAN update must be a Github "release" </li>
+                <li>Recommended: Maintainer will use Github issues system for issue/bug reporting and tracking. </li>
+                </ul>
+                <li>Required: All packages must print the OWI GRAN Software disclaimer<sup>A</sup> describing nature of preliminary code upon initial load, unless tool has an associated peer-reviewed publication and citation. </li>
+                <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION"" file.</li>
+                <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact R_Admins@usgs.gov for support with initial release of software</li>
+                <li>Binary packages will be maintained for only the current release version of R.</li>
+</ul>
+</p>
+<sup>A</sup> OWI GRAN Software disclaimer: Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
+
             
         </section>
     
