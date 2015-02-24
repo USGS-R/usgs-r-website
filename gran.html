@@ -156,9 +156,10 @@ install.packages(<span class="string">"EflowStats"</span>, <span class="variable
 </pre>
 
 				
-				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (in Windows, it is typically in</li>
+				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. To do this, find the Rprofile.site file (on a Windows OS, it is typically in C:\Program Files\R\R-X.X.X\etc, on a Mac OS, it is typically found in ~/.Rprofile (if the file does not exist, create one using a text editor)</li>
 				
-				<p>Then add:</p>
+				<p>Then add:
+				</p>
 <pre class="language-Rcode" >
 <code class="language-Rcode">
 options(<span class="variable">repos</span><span class="punctuation">=</span>c(<span class="variable">getOption</span>(<span class="string">'repos'</span>), <span class="variable">USGS</span><span class="punctuation">=</span><span class="string">'http://owi.usgs.gov/R'</span>))
