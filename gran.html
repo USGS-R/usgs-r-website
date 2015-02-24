@@ -186,11 +186,11 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
                 <li>Host your full package code on github.com (preferably within the USGS-R organization)</li>
                 <li><a href="https://help.github.com/articles/creating-releases/">Create a tagged release</a> of a stable version of your package on github.com</li>
                 <li>Ensure package builds and passes "as cran" checks with no warnings</li>
-                <pre class="language-Rcode" >
-                    <code class="language-Rcode">
-                        R CMD check --as-cran {packagename_version}.tar.gz
-                    </code>
-                </pre>
+<pre class="language-Rcode" >
+    <code class="language-Rcode">
+        R CMD check --as-cran {packagename_version}.tar.gz
+    </code>
+</pre>
                 <li><a href="https://help.github.com/articles/fork-a-repo/">Fork</a> the USGS-R <code>grantools</code> to your personal github account.</li>
                 <li>Add your package location and name (using the format <code>repository/packagename</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </li>
                 <li>Create a pull request between your personal fork of grantools and the USGS-R version of grantools</li>
@@ -214,7 +214,7 @@ If a maintainer becomes inactive, the package will be removed</li>
                 <li>Recommended: Maintainer will use Github issues system for issue/bug reporting and tracking. </li>
                 </ul>
                 <li>Required: All packages must print the OWI GRAN Software disclaimer<sup>A</sup> describing nature of preliminary code upon initial load, unless tool has an associated peer-reviewed publication and citation. </li>
-                <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION"" file.</li>
+                <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION" file.</li>
                 <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact R_Admins@usgs.gov for support with initial release of software</li>
                 <li>Binary packages will be maintained for only the current release version of R.</li>
 </ul>
