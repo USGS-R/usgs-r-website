@@ -177,7 +177,7 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
             
             <p>
                 Developers that have an R package that would be useful to others within USGS are encouraged to use GRAN to distribute those packages. 
-                There are a minimum number of required steps before a package is GRAN-ready (see <a href="#gran_policy">policy</a>), 
+                There are a minimum number of required steps before a package is GRAN-ready (see <a href="#gran_policy">guidelines</a>), 
                 which should be completed before submitting a package to GRAN. Assuming a package is compliant, follow the steps for submission below:
                           </p>
   
@@ -187,9 +187,9 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
                 <li><a href="https://help.github.com/articles/creating-releases/">Create a tagged release</a> of a stable version of your package on github.com</li>
                 <li>Ensure package builds and passes "as cran" checks with no warnings</li>
 <pre class="language-Rcode" >
-    <code class="language-Rcode">
-        R CMD check --as-cran {packagename_version}.tar.gz
-    </code>
+<code class="language-Rcode">
+R CMD check --as-cran {packagename_version}.tar.gz
+</code>
 </pre>
                 <li><a href="https://help.github.com/articles/fork-a-repo/">Fork</a> the USGS-R <code>grantools</code> to your personal github account.</li>
                 <li>Add your package location and name (using the format <code>repository/packagename</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </li>
@@ -201,10 +201,10 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
         
         <section class="box content">
         
-            <h3>What is the GRAN policy?<a id="gran_policy"></a></h3>
+            <h3>What are the GRAN guidelines?<a id="gran_policy"></a></h3>
             
             <p>
-            <ul>
+            <ol  class="granNumberList">
                 <li>Required: Active tool maintainer with *@usgs.gov email address
 If a maintainer becomes inactive, the package will be removed</li>
                 <li>Required: Code must be on Github USGS-R repository to facilitate the automation of tool builds, checks, and releases:</li>
@@ -215,11 +215,14 @@ If a maintainer becomes inactive, the package will be removed</li>
                 </ul>
                 <li>Required: All packages must print the OWI GRAN Software disclaimer<sup>A</sup> describing nature of preliminary code upon initial load, unless tool has an associated peer-reviewed publication and citation. </li>
                 <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION" file.</li>
-                <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact R_Admins@usgs.gov for support with initial release of software</li>
-                <li>Binary packages will be maintained for only the current release version of R.</li>
-</ul>
+                <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact  <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a> for support with initial release of software</li>
+                <li>Binary packages will be maintained for only the current release version of R</li>
+</ol>
 </p>
-<sup>A</sup> OWI GRAN Software disclaimer: Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
+<p><sup>A</sup> OWI GRAN Software disclaimer: Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
+  
+</p>
+
 
             
         </section>
