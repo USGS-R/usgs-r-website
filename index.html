@@ -9,9 +9,10 @@
 <meta charset="UTF-8">
 <title>OWI-R</title>
 <link href="css/grid.css" rel="stylesheet" type="text/css">
-<link href="css/twitterstyle.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+
+<link rel="icon" type="image/ico" href="img/favicon.ico"  />
 
 <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
 <script src="js/strftime.js" type="text/javascript"></script>
@@ -26,7 +27,17 @@
 			});		
 	});
 </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-53797708-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type=”application/javascript” src=”http://www.usgs.gov/scripts/analytics/usgs-analytics.js”></script>
 </head>
 
 <body>
@@ -148,9 +159,9 @@
                 
                 <p class="first-p nextToLink"><a href="about.html#whyr">Why use R?</a> - Learning about a new tool is daunting. Read more about some of the benefits of R proficiency.</p>
                 
-                <p class="nextToLink"><a href="resources.html#getting-started">Getting started</a> - Resources for installing R and other helpful links.</p>
+                <p class="nextToLink"><a href="resources.html#getting-started">Get started</a> - Resources for installing R and other helpful links.</p>
                 
-                <p class="nextToLink"><a href="resources.html">Getting help</a> - Stuck in the mud early in your R journey? Check out Getting help for quick tips and links.</p>
+                <p class="nextToLink"><a href="resources.html">Get help</a> - Stuck in the mud early in your R journey? Check out Getting help for quick tips and links.</p>
             
             </section>
             
@@ -186,13 +197,37 @@
                 
                 <div id="wrapper" class="grid clearfix">
                 
-                    <ol id="repos">
-            
-                
-            
-                    </ol><!--repos-->
+                    <div id="repoContainer">
                     
-                 </div>
+                    	<a href="https://github.com/USGS-R/dataRetrieval" target="_blank">
+                  		<div class="repos">
+                        	<h2>dataRetrieval</h2>
+                            <p class="repoDescription">This R package for downloading and importing USGS and EPA water data.</p>
+                        </div>
+                        </a>
+                        <a href="https://github.com/USGS-R/EGRET" target="_blank">
+                        <div class="repos">
+                        	<h2>EGRET</h2>
+                            <p class="repoDescription">An R-package for the analysis of long term changes in water quality and streamflow</p>
+                        </div>
+                        </a>
+                        <a href="https://github.com/USGS-R/EflowStats" target="_blank">
+                        <div class="repos diffColor">
+                        	<h2>EflowStats</h2>
+                            <p class="repoDescription">Calculates Hydrologic Indicator stats and fundamental properties of daily streamflow for a given set of data.</p>
+                            <p class="underDevelopment">Under Development</p>
+                        </div>
+                        </a>
+                        <a href="https://github.com/USGS-R/geoknife" target="_blank">
+                        <div class="repos diffColor">
+                        	<h2>geoknife</h2>
+                            <p class="repoDescription">Tools for geo-web processing of gridded data. geoknife slices up data according to overlap with irregular features.</p>
+                            <p class="underDevelopment">Under Development</p>
+                        </div>
+                    	</a>
+                    </div><!--repoContainer-->
+                    
+                 </div><!--box-->
             
             </section>
         
@@ -227,7 +262,7 @@
     
     		<p style="margin: 5px 0 5px 0; padding-left: 5px;">URL: http//cida.usgs.gov/</p>
             
-            <p style="margin: 5px 0 5px 0; padding-left: 5px;">Contact Information: <a href="mailto:cida_webmaster@usgs.gov?Subject=Hello%20again" target="_top">cida_webmaster@usgs.gov</a></p>
+            <p style="margin: 5px 0 5px 0; padding-left: 5px;">Contact Information: <a href="mailto:gs-w_r_admin@usgs.gov?Subject=USGS-R%20Website" target="_top">gs-w_r_admin@usgs.gov</a></p>
     
     		<p style="margin: 5px 0 5px 0; padding-left: 5px;">Page last modified: <script>document.write(document.lastModified);</script></p>
     
