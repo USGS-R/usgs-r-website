@@ -11,6 +11,7 @@
 @rCodeBg:#f7f7f7;
 @rCodeBasicColor:#333333;
 @rCodePunctuations:#a71d5d;
+@underDevelopment:#ef5760;
 
 *{margin:0; padding:0;}
 
@@ -188,6 +189,77 @@ p.nextToLink{
     
 #featured_packages h4{
     background:rgb(0,51,102);}
+    
+#repoContainer{
+    width:100%;
+    min-height:100px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    margin-top:15px;
+    }
+    
+.repos{
+    background:@white;
+    width:220px;
+    height:150px;
+    margin:0 10px 10px 10px;
+    box-shadow:0 0 5px rgba(0,0,0,.1);
+    position:relative;
+    }
+    
+.repos h2{
+    font-size:20px;
+    color:@primaryColor;
+    margin:15px 10px 5px 10px;
+    max-width:160px;
+    }
+    
+.repos p.repoDescription{
+    font-size:.8em;
+    margin:5px 20px 5px 10px;
+    }
+    
+.repos:after{
+    content: '';
+position: absolute;
+right: 0;
+top: 0;
+width: 0;
+height: 0;
+border-bottom: 70px solid transparent;
+border-left: 70px solid transparent;
+border-right: 70px solid rgb(0,51,102);
+pointer-events: none;
+    }
+    
+.diffColor:after{
+    content: '';
+position: absolute;
+right: 0;
+top: 0;
+width: 0;
+height: 0;
+border-bottom: 70px solid transparent;
+border-left: 70px solid transparent;
+border-right: 70px solid @underDevelopment;
+pointer-events: none;
+    }
+    
+p.underDevelopment{
+    width:75px;
+    text-align:center;
+    font-size:.65em !important;
+    position:absolute;
+    top:6px;
+    right:-20px;
+    color:@white;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    z-index:1000;
+    font-weight:600;
+    }
     
 /*========content class css========*/
 
