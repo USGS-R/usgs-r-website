@@ -146,7 +146,7 @@
 				
 				GRAN is a repository of curated R packages developed by USGS employees for USGS and external use. 
                 It allows a user to easily download and install an R package and, in the future, receive updates to 
-                that package code as they become available. <br> <br>
+                that package code as they become available. Inclusion of packages on GRAN does not imply USGS approval; both approved and preliminary packages are found here. Citations and disclaimers associated with package are included upon package load or in the package "CITATION" file. <br> <br>
 
 				The objective of GRAN is to facilitate engagement and R tool sharing across the USGS Water Mission Area. 
             </p>
@@ -223,17 +223,17 @@ R CMD check --as-cran {packagename_version}.tar.gz
             <p>
             <ol  class="granNumberList">
                 <li>Required: Active tool maintainer with *@usgs.gov email address
-If a maintainer becomes inactive, the package will be removed</li>
+If a maintainer becomes inactive, the package will be removed.</li>
                 <li>Required: Code must be on Github USGS-R repository to facilitate the automation of tool builds, checks, and releases:</li>
                 <ul>
-                <li>Recommended: Continuous integration</li> 
-                <li>Required: Each GRAN update must be a Github "release" </li>
+                <li>Required: Each GRAN update must be a Github "release". </li>
+                <li>Recommended: Continuous integration.</li>
                 <li>Recommended: Maintainer will use Github issues system for issue/bug reporting and tracking. </li>
                 </ul>
                 <li>Required: All packages must print the OWI GRAN Software disclaimer<sup>A</sup> describing nature of preliminary code upon initial load, unless tool has an associated peer-reviewed publication and citation. </li>
                 <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION" file.</li>
-                <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact  <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a> for support with initial release of software</li>
-                <li>Binary packages will be maintained for only the current release version of R</li>
+                <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact  <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a> for support with initial release of software.</li>
+                <li>Binary packages will be maintained for only the current release version of R.</li>
 </ol>
 </p>
 <p><sup>A</sup> OWI GRAN Software disclaimer: Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
