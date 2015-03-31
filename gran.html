@@ -145,11 +145,9 @@
             <p>
                 <b>G</b>eological Survey <b>R</b> <b>A</b>rchive <b>N</b>etwork <br> <br>
 				
-				GRAN is a repository of curated R packages developed by USGS employees for USGS and external use. 
-                It allows a user to easily download and install an R package and, in the future, receive updates to 
-                that package code as they become available. Inclusion of packages on GRAN does not imply USGS approval; citations and disclaimers associated with package are included upon package load or in the package "CITATION" file. <br> <br>
+GRAN is a repository of curated R packages developed by USGS employees for USGS and external use. It allows a user to easily download and install an R package and, in the future, receive updates to that package code as they become available. Inclusion of packages on GRAN does not imply USGS approval; citations and disclaimers associated with package are included upon package load or in the package "CITATION" file. <br> <br>
 
-				The objective of GRAN is to facilitate engagement and R tool sharing across the USGS Water Mission Area. 
+The objective of GRAN is to facilitate engagement and R tool sharing across the USGS Water Mission Area. 
             </p>
             
         </section>
@@ -164,37 +162,36 @@
                 <ol class="granNumberList">
 				
 				<li><h4>Alter the Rprofile.site file</h4>
-                                    This will tell your R environment to always look in the GRAN repository 
-                when installing packages and updating packages. This is the preferred method because of the ability to 
-                automatically get GRAN updates. The following command in R will run a script to update your Rprofile file:</li>
-				
+This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. The following command in R will run a script to update your Rprofile file:</li>
 
 <pre class="language-Rcode" >
 <code class="language-Rcode">
-source(<span class="string">'http://owi.usgs.gov/R/add_gran_repo.R'</span>)
-	</code>
+source(<span class="string">"http://owi.usgs.gov/R/add_gran_repo.R"</span>)
+</code>
 </pre>
-                                It is then possible to simply install the <code class="language-Rcode">smwrData</code> package using: <br>
-                                <pre class="language-Rcode">
+It is then possible to simply install the <code class="language-Rcode">smwrData</code> package using: <br>
+
+<pre class="language-Rcode">
 <code class="language-Rcode">
 install.packages(<span class="string">"smwrData"</span>)
-	</code>
+</code>
 </pre>
-                                Or to update all installed packages (if needed) with: <br>
-                                <pre class="language-Rcode">
+
+Or to update all installed packages (if needed) with: <br>
+<pre class="language-Rcode">
 <code class="language-Rcode">
 update.packages()
-	</code>
+</code>
 </pre>
                                 
 
-					<li><h4>Use the 'repo' argument in the install.packages function</h4>
-                                        This will tell install.packages to look at a specific url for package installation. </li>
+<li><h4>Use the 'repo' argument in the install.packages function</h4>
+This will tell install.packages to look at a specific url for package installation. </li>
 									
 <pre class="language-Rcode">
 <code class="language-Rcode">
 install.packages(<span class="string">"smwrData"</span>, <span class="variable">repos</span><span class="punctuation">=</span><span class="string">"http://owi.usgs.gov/R"</span>)
-	</code>
+</code>
 </pre>
 				</ol>
 				
@@ -206,22 +203,22 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
             <h3>What packages are on GRAN?</h3>
             
             <p>
-                GRAN includes curated packages that can be easily installed. A detailed package list will be added in the future, 
-                but one can always use the following command in R to list all packages that are currently available:<br><br>
-                
+                GRAN includes curated packages that can be easily installed. A detailed package list will be added in the future, but one can always use the following command in R to list all packages that are currently available:
+<br><br>
+              
                 <ol class="granNumberList">
-				
 
 <pre class="language-Rcode" >
 <code class="language-Rcode">
-    names(available.packages(contrib.url(c(<span class="variable">USGS</span>=<span class="string">'http://owi.usgs.gov/R'</span>)))[,1])
-	</code>
+GRAN_pkg <- available.packages(contrib.url(<span class="string">"http://owi.usgs.gov/R"</span>))
+pkg_names <- names(GRAN_pkg[,1])
+pkg_names
+</code>
 </pre>
 
             
         </section>
 
-    
         <section class="box content" id="add-packages">
         
             <h3>How do I add my package to GRAN?<a id="add_package"></a></h3>
@@ -236,12 +233,14 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
                 <li>Obtain, document, and address peer review of package using the <a href="https://my.usgs.gov/jira/browse/GITPILOT/">my.usgs JIRA system</a>. </li>
                 <li>Host your full package code on github.com (preferably within the USGS-R organization)</li>
                 <li><a href="https://help.github.com/articles/creating-releases/">Create a tagged release</a> of a stable version of your package on github.com</li>
-                <li>Ensure package builds and passes "as cran" checks with no warnings</li>
+                <li>Ensure package builds and passes "as cran" checks with no warnings
+                
 <pre class="language-Rcode" >
 <code class="language-Rcode">
 R CMD check --as-cran {packagename_version}.tar.gz
 </code>
 </pre>
+</li>
                 <li><a href="https://help.github.com/articles/fork-a-repo/">Fork</a> the USGS-R <code>grantools</code> to your USGS github account.</li>
                 <li>Add your package location and name (using the format <code>repository/packagename</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </li>
                 <li>Create a pull request between your fork of grantools and the USGS-R version of grantools</li>
