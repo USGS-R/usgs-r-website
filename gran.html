@@ -163,7 +163,8 @@
                 
                 <ol class="granNumberList">
 				
-				<li>Alter the Rprofile.site file. This will tell your R environment to always look in the GRAN repository 
+				<li><h4>Alter the Rprofile.site file</h4>
+                                    This will tell your R environment to always look in the GRAN repository 
                 when installing packages and updating packages. This is the preferred method because of the ability to 
                 automatically get GRAN updates. The following command in R will run a script to update your Rprofile file:</li>
 				
@@ -173,8 +174,22 @@
 source(<span class="string">'http://owi.usgs.gov/R/add_gran_repo.R'</span>)
 	</code>
 </pre>
+                                It is then possible to simply install the <code class="language-Rcode">smwrData</code> package using: <br>
+                                <pre class="language-Rcode">
+<code class="language-Rcode">
+install.packages(<span class="string">"smwrData"</span>)
+	</code>
+</pre>
+                                Or to update all installed packages (if needed) with: <br>
+                                <pre class="language-Rcode">
+<code class="language-Rcode">
+update.packages()
+	</code>
+</pre>
+                                
 
-					<li>When installing a package, add a 'repo' argument to the install.packages function:</li>
+					<li><h4>Use the 'repo' argument in the install.packages function</h4>
+                                        This will tell install.packages to look at a specific url for package installation. </li>
 									
 <pre class="language-Rcode">
 <code class="language-Rcode">
@@ -186,7 +201,25 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
             </p>
             
         </section>
+        <section class="box content" id="list-packages">
         
+            <h3>What packages are on GRAN?</h3>
+            
+            <p>
+                GRAN includes curated packages that can be easily installed. A detailed package list will be added in the future, 
+                but one can always use the following command in R to list all packages that are currently available:<br><br>
+                
+                <ol class="granNumberList">
+				
+
+<pre class="language-Rcode" >
+<code class="language-Rcode">
+    names(available.packages(contrib.url(c(<span class="variable">USGS</span>=<span class="string">'http://owi.usgs.gov/R'</span>)))[,1])
+	</code>
+</pre>
+
+            
+        </section>
 
     
         <section class="box content" id="add-packages">
@@ -238,7 +271,8 @@ If a maintainer becomes inactive, the package will be removed.</li>
                 <li>Binary packages will be maintained for only the current release version of R.</li>
 </ol>
 </p>
-<p><sup>A</sup> OWI GRAN Software disclaimer: Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
+<p><sup>A</sup> OWI GRAN Software disclaimer: This information is preliminary or provisional and is subject to revision. It is being provided to meet the need for timely best science. The information has not received final approval by the U.S. Geological Survey (USGS) and is provided on the condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the information. 
+    Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
   
 </p>
 
