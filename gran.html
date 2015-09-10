@@ -190,7 +190,7 @@ This will tell install.packages to look at a specific url for package installati
 									
 <pre class="language-Rcode">
 <code class="language-Rcode">
-install.packages(<span class="string">"smwrData"</span>, <span class="variable">repos</span><span class="punctuation">=</span><span class="string">"http://owi.usgs.gov/R"</span>)
+install.packages(<span class="string">"smwrData"</span>, <span class="variable">repos</span><span class="punctuation">=</span>c(<span class="string">"http://owi.usgs.gov/R"</span><span class="punctuation">,</span>getOption(<span class="string">"repos"</span>)))
 </code>
 </pre>
 				</ol>
