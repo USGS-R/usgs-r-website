@@ -166,7 +166,14 @@ This will tell your R environment to always look in the GRAN repository when ins
 
 <pre class="language-Rcode" >
 <code class="language-Rcode">
-source(<span class="string">"http://owi.usgs.gov/R/add_gran_repo.R"</span>)
+rprofile_path = file.path(Sys.getenv(<span class="string">"HOME"</span>)<span class="punctuation">,</span> <span class="string">".Rprofile"</span>)
+write(<span class="string">'\noptions(repos=c(getOption(\'repos\'), 
+    USGS=\'http://owi.usgs.gov/R\'))\n'</span><span class="punctuation">,</span>
+      rprofile_path<span class="punctuation">,</span> 
+      append <span class="punctuation">=</span>  <span class="variable">TRUE</span>)
+
+cat(<span class="string">'Your Rprofile has been updated to include GRAN.
+    Please restart R for changes to take effect.'</span>)
 </code>
 </pre>
 It is then possible to simply install the <code class="language-Rcode">smwrData</code> package using: <br>
