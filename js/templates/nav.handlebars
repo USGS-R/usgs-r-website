@@ -1,0 +1,35 @@
+<!-- BEGIN nav --> 
+
+	<nav>
+	
+		<img id="menu" src="img/mobileburger.png" alt="Mobile Menu Hamburger"/>
+    
+    	<ul id="dropdown">
+        	
+            <a href="index.html"><li>Home</li></a>
+            
+        	<a href="about.html"><li>About</li></a>
+            
+            <a href="resources.html"><li>Resources</li></a>
+			
+			<a href="training.html"><li>Training</li></a>
+            
+            <a href="gran.html"><li>GRAN</li></a>
+            
+            <a href="contact_contribute.html" target="_top"><li>Contact</li></a>
+        
+        </ul>
+    
+    </nav>
+	
+<script>
+	//mobile menu toggle functionality
+	$(document).ready(function(){
+		$("#menu").click(function(){
+			$("#dropdown").toggle("slow", function(){
+				});	
+			});		
+	});
+</script>
+
+<!-- END nav -->
