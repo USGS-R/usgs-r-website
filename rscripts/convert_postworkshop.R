@@ -2,7 +2,7 @@
 # in order to use on the OWI-R website
 
 # To update the files: 
-# 1. Run setwd("C:/Users/lcarr/usgs-r-website")
+# 1. Set working directory to usgs-r-website, ex. setwd("C:/Users/lcarr/usgs-r-website")
 # 2. Run this script. 
 # 3. In Git Bash, 
 #       cd usgs-r-website
