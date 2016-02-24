@@ -1,0 +1,16 @@
+<div id="productContainer">
+
+	<h3>Product Review</h3>
+
+	{{#each .}}
+	<div class="review">
+		<div class="rating">
+			{{#each stars}}
+				&#9733;
+			{{/each}}
+		</div>
+		<p>{{feedback}}</p>
+	</div>
+	{{/each}}
+	
+</div>

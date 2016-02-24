@@ -268,9 +268,6 @@ p.underDevelopment {
   min-height: 100px;
 }
 /*========training CSS========*/
-iframe {
-  border: none;
-}
 #mapArea {
   padding-bottom: 0px;
 }
@@ -296,6 +293,37 @@ iframe {
 }
 #rTrainingInterest a:hover {
   text-decoration: underline;
+}
+#productContainer {
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#productContainer h3 {
+  padding: 5px 0;
+  width: 100%;
+}
+.review {
+  border: 1px solid #bebebe;
+  width: 284px;
+  min-height: 20px;
+  border-radius: 10px;
+  margin: 10px 10px 0 0;
+  padding: 3px 10px 10px 10px;
+}
+.review h3 {
+  padding: 0 !important;
+  margin: 0 0 5px 0;
+}
+.review p {
+  text-indent: 0px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.rating {
+  font-size: 1.2em;
 }
 /*========gran html========*/
 .granNumberList {
@@ -526,6 +554,9 @@ pre code {
   .box p {
     font-size: 1.1em;
     margin: 5px 0 0 10px;
+  }
+  #productContainer {
+    justify-content: flex-start;
   }
 }
 /*media query*/
