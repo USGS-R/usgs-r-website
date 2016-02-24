@@ -4,7 +4,11 @@
 # To update the files: 
 # 1. Run setwd("C:/Users/lcarr/usgs-r-website")
 # 2. Run this script. 
-# 3. 
+# 3. In Git Bash, 
+#       cd usgs-r-website
+#       git status -s
+#       git add json/scheduledtrainings.json
+#       git commit -m "MESSAGE"
 
 library(googlesheets)
 library(dplyr)
@@ -29,5 +33,3 @@ data_website <- data %>%
   
 export_json <- toJSON(data_website)
 write(export_json, "json/scheduledtrainings.json")
-
-# now update the scheduledtrainings.json file on the repo with this one
