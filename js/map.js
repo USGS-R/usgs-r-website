@@ -14,9 +14,9 @@ var mtwsc = L.marker([46.584066, -112.042416]).addTo(map);
 
 //Popups for locations above
 marker.bindPopup("<h4>Florida Water Science Center</h4><p>3000 Attendees</p>");
-nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>40,000 Attendees!!</p>");
+nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>15 Attendees</p>");
 egsc.bindPopup("<h4>Eastern Geographic Science Center</h4><p>600,000 Attendees!!</p>");
-mtwsc.bindPopup("<h4>Montana Water Science Center</h4><p>16 Attendees</p>");
+mtwsc.bindPopup("<h4>Wyoming-Montana Water Science Center</h4><p>16 Attendees</p>");
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
