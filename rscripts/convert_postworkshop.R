@@ -1,6 +1,15 @@
 # convert R Training Post-Workshop responses from Google Sheets into JSON 
 # in order to use on the OWI-R website
 
+# To update the files: 
+# 1. Set working directory to usgs-r-website, ex. setwd("C:/Users/lcarr/usgs-r-website")
+# 2. Run this script. 
+# 3. In Git Bash, 
+#       cd usgs-r-website
+#       git status -s
+#       git add json/postworkshop.json
+#       git commit -m "MESSAGE"
+
 library(googlesheets)
 library(dplyr)
 library(jsonlite)
@@ -39,6 +48,4 @@ data_website <- data_website %>%
   filter(grepl(feedback_wanted, data_website$feedback))
 
 export_json <- toJSON(data_website)
-write(export_json, "postworkshop.json")
-
-# now update the postworkshop.json file on the repo with this one
+write(export_json, "json/postworkshop.json")
