@@ -1,43 +1,23 @@
 <table id="scheduleTable">
 		<thead>
 			<tr>
-				<th id="tableHeader" colspan="4">Training Schedule</th>
+				<th id="tableHeader" colspan="5">Training Schedule</th>
 			</tr>
 		</thead>
 		<tr>
 			<th>Where</th>
 			<th>When</th>
 			<th>Who to Contact</th>
-			<th>Registration Still Open</th>
+			<th>Host</th>
+			<th>Registration Status</th>
 		</tr>
-		<tr>
-			<td>Fort Collins</td>
-			<td>4/18</td>
-			<td>Cathy Cullinane Thomas</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>Denver</td>
-			<td>4/18</td>
-			<td>Joe Mills</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>New Mexico WSC</td>
-			<td>4/18</td>
-			<td>Matt Ely</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>California WSC</td>
-			<td>4/18</td>
-			<td>Tracy Davis</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>Lower Mississppi Gulf Coast WSC</td>
-			<td>4/18</td>
-			<td>Reed Green</td>
-			<td>Yes</td>
-		</tr>
+		{{#each .}}
+			<tr>
+				<td>{{Location}}</td>
+				<td>{{Start}} - {{End}}</td>
+				<td>{{Local_Organizer}}</td>
+				<td>{{Host}}</td>
+				<td>{{Registration_Status}}</td>
+			</tr>
+		{{/each}}
 </table>

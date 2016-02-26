@@ -7,8 +7,7 @@ a {
   color: #003366;
 }
 #twitter-widget-0 {
-  display: none !important;
-  margin-bottom: 15px !important;
+  margin: 10px 0 15px 0 !important;
 }
 h4 {
   font-family: "Open Sans";
@@ -85,7 +84,6 @@ article {
   height: 40%;
 }
 #welcome {
-  text-align: center;
   margin: 5px 0 15px 0;
   font-family: "Open Sans";
 }
@@ -487,8 +485,7 @@ pre code {
   }
   /*========index css========*/
   #usgs-r-logo {
-    width: 292px;
-    height: 292px;
+    width: 240px;
     float: right;
     margin-bottom: 25px;
   }
