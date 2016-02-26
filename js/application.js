@@ -12,7 +12,8 @@ $(document).ready(function(){
 			{file:'js/templates/header.handlebars', div: '#header', context: {}}, 
 			{file:'js/templates/footer.handlebars', div: '#footer', context: {}},
 			{file:'js/templates/nav.handlebars', div: '#nav', context: {}} ,
-			{file:'js/templates/review.handlebars', div: '#productReview', context: reviews}
+			{file:'js/templates/review.handlebars', div: '#productReview', context: reviews},
+			{file:'js/templates/schedule.handlebars', div: '#trainingSchedule', context: {}}
 		];
 	
 		$.each(sections, function(index, value){
