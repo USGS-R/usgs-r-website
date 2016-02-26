@@ -277,9 +277,31 @@ p.underDevelopment {
 #map {
   height: 400px;
 }
-#trainingSchedule h4 {
-  margin: 5px 0 0 6px;
+#scheduleTable {
+  background: #f2f0eb;
+  width: 100%;
+  margin: 0 0 15px 0;
+  font-family: "Open Sans";
+  border-collapse: collapse;
+}
+#scheduleTable #tableHeader {
+  font-size: 1.1em;
   color: #003366;
+  font-weight: 700;
+}
+#scheduleTable td {
+  padding: 10px;
+}
+#scheduleTable th {
+  font-size: .9em;
+  font-weight: 600;
+  padding: 10px;
+  border: 1px solid #bebebe;
+  text-align: left;
+}
+#scheduleTable td {
+  border: 1px solid #bebebe;
+  font-size: .85em;
 }
 #rTrainingInterest p {
   text-indent: 0;
@@ -319,7 +341,8 @@ p.underDevelopment {
 }
 .review p {
   text-indent: 0px;
-  margin: 0 !important;
+  font-size: .9em !important;
+  margin: 3px 0 0 0 !important;
   padding: 0 !important;
 }
 .rating {
