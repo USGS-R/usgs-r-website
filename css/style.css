@@ -275,31 +275,31 @@ p.underDevelopment {
 #map {
   height: 400px;
 }
-#scheduleTable {
-  background: #f2f0eb;
-  width: 100%;
-  margin: 0 0 15px 0;
-  font-family: "Open Sans";
-  border-collapse: collapse;
+.training {
+  padding: 0 10px 0 10px;
 }
-#scheduleTable #tableHeader {
-  font-size: 1.1em;
+.training strong {
+  font-weight: 300;
+  font-size: .9em !important;
+}
+.training h3 {
+  padding: 0;
+  margin: 0;
   color: #003366;
-  font-weight: 700;
 }
-#scheduleTable td {
-  padding: 10px;
+.training h4 {
+  padding: 0;
+  margin-top: 10px;
 }
-#scheduleTable th {
-  font-size: .9em;
-  font-weight: 600;
-  padding: 10px;
+.trainingWorkshop {
   border: 1px solid #bebebe;
-  text-align: left;
+  padding: 5px 10px 10px 10px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
-#scheduleTable td {
-  border: 1px solid #bebebe;
-  font-size: .85em;
+.trainingLocation {
+  border-bottom: 1px solid #bebebe;
+  padding-bottom: 5px;
 }
 #rTrainingInterest p {
   text-indent: 0;

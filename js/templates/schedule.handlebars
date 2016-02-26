@@ -1,23 +1,14 @@
-<table id="scheduleTable">
-		<thead>
-			<tr>
-				<th id="tableHeader" colspan="5">Training Schedule</th>
-			</tr>
-		</thead>
-		<tr>
-			<th>Where</th>
-			<th>When</th>
-			<th>Who to Contact</th>
-			<th>Host</th>
-			<th>Registration Status</th>
-		</tr>
-		{{#each .}}
-			<tr>
-				<td>{{Location}}</td>
-				<td>{{Start}} - {{End}}</td>
-				<td>{{Local_Organizer}}</td>
-				<td>{{Host}}</td>
-				<td>{{Registration_Status}}</td>
-			</tr>
-		{{/each}}
-</table>
+<h3>Training Schedule</h3>
+<div class="training">
+	{{#each .}}
+		<div class="trainingWorkshop">
+			<div class="trainingLocation">
+				<h3>{{Location}}</h3>
+			</div>
+			<h4>When: <strong>{{Start}} - {{End}}</strong></h4>
+			<h4>Host: <strong>{{Host}}</strong></h4>
+			<h4>Who to Contact: <strong>{{Local_Organizer}}</strong></h4>
+			<h4>Registration Status: <strong>{{Registration_Status}}</strong></h4>
+		</div>
+	{{/each}}
+</div>
