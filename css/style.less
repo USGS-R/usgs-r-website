@@ -2,6 +2,7 @@
 @background:#e8e6e1;
 @fontFamily:"Open Sans";
 @white:#fff;
+@border:1px solid #bebebe;
 @darkBlueBorder:1px solid rgb(27,45,21);
 @whiteBorder:1px solid #fff;
 @highlight:rgb(229,93,70);
@@ -320,11 +321,37 @@ p.underDevelopment{
     height:400px;
     }
     
-#trainingSchedule h4{
-    margin:5px 0 0 6px;
-    color:@primaryColor;
-    }
+#scheduleTable{
+    background:#f2f0eb;
+    width:100%;
+    margin:0 0 15px 0;
+    font-family:@fontFamily;
+    border-collapse:collapse;
     
+    #tableHeader{
+        font-size:1.1em;
+        color:@primaryColor;
+        font-weight:700;
+        }
+   
+   td{
+       padding:10px;
+       }
+       
+    th{
+        font-size:.9em;
+        font-weight:600;
+        padding:10px;
+        border:@border;
+        text-align:left;
+        }
+        
+    td{
+        border: @border;
+        font-size:.85em;
+        }
+    }
+       
 #rTrainingInterest{
     p{
         text-indent:0;
@@ -371,7 +398,8 @@ p.underDevelopment{
     
     p{
         text-indent:0px;
-        margin:0 !important;
+        font-size:.9em !important;
+        margin:3px 0 0 0 !important;
         padding:0 !important;
         }
     }
