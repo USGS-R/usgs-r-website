@@ -1,43 +1,14 @@
-<table id="scheduleTable">
-		<thead>
-			<tr>
-				<th id="tableHeader" colspan="4">Training Schedule</th>
-			</tr>
-		</thead>
-		<tr>
-			<th>Where</th>
-			<th>When</th>
-			<th>Who to Contact</th>
-			<th>Registration Still Open</th>
-		</tr>
-		<tr>
-			<td>Fort Collins</td>
-			<td>4/18</td>
-			<td>Cathy Cullinane Thomas</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>Denver</td>
-			<td>4/18</td>
-			<td>Joe Mills</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>New Mexico WSC</td>
-			<td>4/18</td>
-			<td>Matt Ely</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>California WSC</td>
-			<td>4/18</td>
-			<td>Tracy Davis</td>
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td>Lower Mississppi Gulf Coast WSC</td>
-			<td>4/18</td>
-			<td>Reed Green</td>
-			<td>Yes</td>
-		</tr>
-</table>
+<h3>Training Schedule</h3>
+<div class="training">
+	{{#each .}}
+		<div class="trainingWorkshop">
+			<div class="trainingLocation">
+				<h3>{{Location}}</h3>
+			</div>
+			<h4>When: <strong>{{Start}} - {{End}}</strong></h4>
+			<h4>Host: <strong>{{Host}}</strong></h4>
+			<h4>Who to Contact: <strong>{{Local_Organizer}}</strong></h4>
+			<h4>Registration Status: <strong>{{Registration_Status}}</strong></h4>
+		</div>
+	{{/each}}
+</div>
