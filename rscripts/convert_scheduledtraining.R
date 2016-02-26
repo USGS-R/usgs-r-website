@@ -25,11 +25,11 @@ data <- gs_read(sheet_registered)
 
 # only return officially scheduled trainings
 data_website <- data %>% 
-  filter(!Schedule.Status %in% c("Tentative", "Complete")) %>%
+  filter(!Schedule_Status %in% c("Tentative", "Complete")) %>%
   mutate(Start = as.Date(Start, "%m/%d/%Y")) %>% 
   mutate(End = as.Date(End, "%m/%d/%Y")) %>% 
   arrange(Start) %>% 
-  select(-Schedule.Status, -Total.Attendees)
+  select(-Schedule_Status, -Total_Attendees)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/scheduledtrainings.json")
