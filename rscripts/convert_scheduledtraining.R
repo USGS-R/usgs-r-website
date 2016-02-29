@@ -6,9 +6,12 @@
 # 2. Run this script. 
 # 3. In Git Bash, 
 #       cd usgs-r-website
+#       git fetch upstream
+#       git merge upstream/master
 #       git status -s
 #       git add json/scheduledtrainings.json
 #       git commit -m "MESSAGE"
+#       git push
 
 library(googlesheets)
 library(dplyr)
