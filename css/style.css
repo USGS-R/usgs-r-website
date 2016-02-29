@@ -46,6 +46,7 @@ nav ul {
   top: 40px;
   width: 100%;
   list-style: none;
+  z-index: 2000;
 }
 nav a {
   display: inline-block;
