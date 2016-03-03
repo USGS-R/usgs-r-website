@@ -25,27 +25,25 @@ sheet_registered <- gs_title("R Post-Workshop Assessment (Responses)")
 data <- gs_read(sheet_registered)
 
 # pull out the columns needed
-data_website <- data %>% 
+data_feedback <- data %>% 
   rename(satisfaction = Overall..how.satisfied.were.you.with.the.R.training.course.you.recently.attended., 
          feedback = Is.there.any.additional.feedback.you.would.like.the.instructors.of.the.course.to.receive..If.so..please.share.below.) %>% 
-  select(satisfaction, feedback)
+  select(satisfaction, feedback) %>% 
+  na.omit() 
 
-# filter only nice feedback
-capitalize <- function(word){
-  word_letters <- strsplit(word, "")[[1]]
-  word_letters[1] <- LETTERS[which(letters == word_letters[1])]
-  word_capital <- paste0(word_letters, collapse = "")
-  return(word_capital)
-}
+## need to change sample sizes to good=6 eh=3, and website=8 after next 
+## training!! There's not currently enough data
 
-feedback_wanted <- c("good", "excellent", "great", "wonderful")
-add_caps <- sapply(feedback_wanted, capitalize)
-feedback_wanted <- c(feedback_wanted, add_caps)
-feedback_wanted <- paste(feedback_wanted, collapse="|")
+data_good <- data_feedback %>% 
+  filter(satisfaction >= 4) %>% 
+  sample_n(7)
 
+data_eh <- data_feedback %>% 
+  filter(satisfaction < 4) %>% 
+  sample_n(1)  
 
-data_website <- data_website %>% 
-  filter(grepl(feedback_wanted, data_website$feedback))
-
+data_website <- rbind(data_good, data_eh) %>% 
+  sample_n(8)
+  
 export_json <- toJSON(data_website)
 write(export_json, "json/postworkshop.json")
