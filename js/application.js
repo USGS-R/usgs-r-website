@@ -23,6 +23,15 @@ $(document).ready(function(){
 				{file:'js/templates/review.handlebars', div: '#productReview', context: reviews},
 				{file:'js/templates/schedule.handlebars', div: '#trainingSchedule', context: scheduleData}
 			];
+			
+			Handlebars.registerHelper('isOpen', function(test, options){
+				//Tests if Registration Status is Open
+						if(test.toLowerCase() === 'open'){
+							return options.fn(this)
+						}
+						return options.inverse(this)
+					});
+					
 		
 			$.each(sections, function(index, value){
 				//Gets mustache file
@@ -33,6 +42,7 @@ $(document).ready(function(){
 					$(value.div).html(html);
 				});
 			});
+			
 			
 		});
 });
