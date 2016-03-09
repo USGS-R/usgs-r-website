@@ -2,13 +2,19 @@
 <div class="training">
 	{{#each .}}
 		<div class="trainingWorkshop">
+		
 			<div class="trainingLocation">
 				<h3>{{Location}}</h3>
 			</div>
+			
 			<h4>When: <strong>{{Start}} - {{End}}</strong></h4>
 			<h4>Host: <strong>{{Host}}</strong></h4>
 			<h4>Who to Contact: <strong>{{Local_Organizer}}</strong></h4>
 			<h4>Registration Status: <strong>{{Registration_Status}}</strong></h4>
+			{{#isOpen Registration_Status  }}
+				<h4><a href="{{Registration_Link}}" target="_blank"><button class="registerButton">Register Here</button></a></h4>
+			{{/isOpen}}
+			
 		</div>
 	{{/each}}
 </div>

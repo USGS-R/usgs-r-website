@@ -298,6 +298,17 @@ p.underDevelopment {
   border-radius: 5px;
   margin-top: 10px;
 }
+.registerButton {
+  background: #003366;
+  padding: 8px 10px;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color: #fff;
+}
+.registerButton:hover {
+  background: #fff;
+  color: #003366;
+}
 .trainingLocation {
   border-bottom: 1px solid #bebebe;
   padding-bottom: 5px;
