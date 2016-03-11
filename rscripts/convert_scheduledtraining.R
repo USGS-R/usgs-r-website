@@ -24,7 +24,7 @@ sheet_found <- gs_ls()
 sheet_registered <- gs_title("Scheduled Trainings")
 
 # read in the data
-data <- gs_read(sheet_registered)
+data <- gs_read(sheet_registered, ws="Course_Schedule")
 
 # only return officially scheduled trainings
 data_website <- data %>% 
