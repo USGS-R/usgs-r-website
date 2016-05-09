@@ -25,25 +25,26 @@ sheet_registered <- gs_title("R Post-Workshop Assessment (Responses)")
 data <- gs_read(sheet_registered)
 
 # pull out the columns needed
-data_feedback <- data %>% 
-  rename(satisfaction = Overall..how.satisfied.were.you.with.the.R.training.course.you.recently.attended., 
-         feedback = Is.there.any.additional.feedback.you.would.like.the.instructors.of.the.course.to.receive..If.so..please.share.below.) %>% 
+data_feedback <- data %>%
+  filter(`Appropriate for website?` == "Yes") %>% 
+  rename(satisfaction = `Overall, how satisfied were you with the R training course you recently attended?`, 
+         feedback = `Is there any additional feedback you would like the instructors of the course to receive? If so, please share below.`) %>% 
   select(satisfaction, feedback) %>% 
+  filter(nchar(feedback) <= 350) %>% 
   na.omit() 
 
-## need to change sample sizes to good=6 eh=3, and website=8 after next 
-## training!! There's not currently enough data
+##\\## not enough bad data for even distribution, need to change later
 
 data_good <- data_feedback %>% 
   filter(satisfaction >= 4) %>% 
-  sample_n(7)
+  sample_n(8)
 
 data_eh <- data_feedback %>% 
   filter(satisfaction < 4) %>% 
   sample_n(1)  
 
 data_website <- rbind(data_good, data_eh) %>% 
-  sample_n(8)
+  sample_n(9)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/postworkshop.json")
