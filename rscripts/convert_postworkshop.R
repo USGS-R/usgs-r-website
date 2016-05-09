@@ -33,7 +33,7 @@ data_feedback <- data %>%
   filter(nchar(feedback) <= 350) %>% 
   na.omit() 
 
-##\\## not enough bad data for even distribution, need to change later
+#### not enough bad data for even distribution, need to change later ####
 
 data_good <- data_feedback %>% 
   filter(satisfaction >= 4) %>% 
