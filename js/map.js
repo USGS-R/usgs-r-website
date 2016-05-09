@@ -19,7 +19,7 @@ flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
 nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees</p>");
 egsc.bindPopup("<h4>Eastern Geographic Science Center</h4><p>20 Attendees</p>");
 mtwsc.bindPopup("<h4>Wyoming-Montana Water Science Center</h4><p>16 Attendees</p>");
-fort.bindPopup("<h4>FORT Science Center</h4><p>29 Attendees</p>");
+fort.bindPopup("<h4>Fort Collins Science Center</h4><p>29 Attendees</p>");
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
