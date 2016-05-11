@@ -1,14 +1,8 @@
----
-title: "Course Feedback Summary"
-author: "Lindsay R. Carr"
-date: "May 9, 2016"
-output: html_document
-subtitle: Ft. Collins, CO (04/26/2016 thru 04/28/2016)
----
+# Course Feedback Summary
+##### `r format(Sys.time(), "%b %d, %Y") `
+##### `r whichTraining `
 
 ```{r setup, include=FALSE}
-whichTraining <- "Ft. Collins, CO (04/26/2016 thru 04/28/2016)"
-
 library(googlesheets)
 library(dplyr)
 library(ggplot2)
@@ -19,32 +13,19 @@ library(htmlTable)
 
 
 ```{r get_current_feedback, echo=FALSE, message=FALSE}
-# browser will open requiring you to authenticate (first time you run this)
-sheet_found <- gs_ls()
-
 #\\#\\# pre-assessment #\\#\\#
 
-# register the spreadsheet by title (must occur in order to read it in)
-sheet_registered_pre <- gs_title("R Pre-Workshop Assessment (Responses)")
-# read in the data
-course_feedback_pre_all <- gs_read(sheet_registered_pre)
-
 ##fix invalid characters (square brackets) in column names
-valid_column_names <- make.names(names=names(course_feedback_pre_all), unique=TRUE, allow_ = TRUE)
-names(course_feedback_pre_all) <- valid_column_names
+valid_column_names <- make.names(names=names(preData), unique=TRUE, allow_ = TRUE)
+names(preData) <- valid_column_names
 
-course_feedback_pre <- course_feedback_pre_all %>% 
+course_feedback_pre <- preData %>% 
   filter(Which.training.will.you.be.attending. == whichTraining)
 
 #\\#\\# post-assessment #\\#\\#
 
-# register the spreadsheet by title (must occur in order to read it in)
-sheet_registered_post <- gs_title("R Post-Workshop Assessment (Responses)")
-# read in the data
-course_feedback_post_all <- gs_read(sheet_registered_post)
-
-course_feedback_post <- course_feedback_post_all %>% 
-  filter(`Which training did you attend?` == whichTraining)
+course_feedback_post <- postData %>% 
+  filter(`Which training did you attend?` == whichTraining) 
 ```
 
 
@@ -68,9 +49,9 @@ bar_results <- function(df, colName){
 }
 ```
 
-# Pre-workshop Feedback
+## Pre-workshop Feedback
 
-### How much experience do you have in R?
+#### How much experience do you have in R?
 
 ```{r echo=FALSE}
 pie_data <- table(course_feedback_pre$How.much.experience.do.you.have.in.R.)
@@ -79,7 +60,7 @@ pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2',
                                      'goldenrod1', 'forestgreen'))
 ```
 
-### For me, this workshop would be a success if . . .
+#### For me, this workshop would be a success if . . .
 
 ```{r echo=FALSE}
 comments_pre <- table_comments(df = course_feedback_pre, 
@@ -88,44 +69,44 @@ comments_pre <- table_comments(df = course_feedback_pre,
 htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
 ```
 
-# Post-workshop feedback
+## Post-workshop feedback
 
-### Overall, how satisfied were you with the R training course you recently attended?
+#### Overall, how satisfied were you with the R training course you recently attended?
 
 ```{r echo=FALSE, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Overall, how satisfied were you with the R training course you recently attended?")
 ```
 
-### How likely would you be to recommend this course to others?
+#### How likely would you be to recommend this course to others?
 
 ```{r echo=FALSE, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "How likely would you be to recommend this course to others?")
 ```
 
-### How appropriate was the 2.5 day length of the workshop? (3=great)
+#### How appropriate was the 2.5 day length of the workshop? (3=great)
 
 ```{r echo=FALSE, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "How appropriate was the 2.5 day length of the workshop? (3=great)")
 ```
 
-### Was the material taught at a good pace? (3=great)
+#### Was the material taught at a good pace? (3=great)
 
 ```{r echo=FALSE, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Was the material taught at a good pace? (3=great)")
 ```
 
-### Was there enough one-on-one interaction between students and instructor, given the class size?
+#### Was there enough one-on-one interaction between students and instructor, given the class size?
 
 ```{r echo=FALSE, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Was there enough one-on-one interaction between students and instructor, given the class size?")
 ```
 
-### Is there any additional feedback you would like the instructors of the course to receive?
+#### Is there any additional feedback you would like the instructors of the course to receive?
 
 ```{r echo=FALSE}
 comments_post <- table_comments(df = course_feedback_post, 
