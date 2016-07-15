@@ -175,7 +175,7 @@ p.nextToLink {
 }
 .repos p.repoDescription {
   font-size: .8em;
-  margin: 5px 20px 5px 10px;
+  margin: 5px 22px 5px 10px;
 }
 .repos:after {
   content: '';
@@ -405,7 +405,7 @@ pre code {
 .punctuation {
   color: #a71d5d;
 }
-@media screen and (min-width: 686px) {
+@media screen and (min-width: 768px) {
   #twitter-widget-0 {
     display: block !important;
   }
@@ -476,7 +476,7 @@ pre code {
     position: static;
   }
   nav a {
-    width: 100px;
+    width: 103px;
     height: 35px;
     display: block;
     float: left;
@@ -491,7 +491,7 @@ pre code {
     color: #003366;
   }
   nav li {
-    padding: 6px 0 0 0;
+    padding: 7px 0 0 0;
     height: 29px;
   }
   /*========index css========*/
