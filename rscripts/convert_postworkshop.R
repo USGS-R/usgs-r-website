@@ -44,7 +44,7 @@ data_eh <- data_feedback %>%
   sample_n(1)  
 
 data_website <- rbind(data_good, data_eh) %>% 
-  sample_n(9)
+  sample_n(6)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/postworkshop.json")
