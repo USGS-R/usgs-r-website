@@ -303,6 +303,14 @@ p.underDevelopment {
   border-radius: 5px;
   margin-top: 10px;
 }
+#arrowImage {
+  width: 75%;
+  margin: 0px 0 10px 0;
+}
+.smallerImage {
+  width: 200px;
+  margin: 10px 0 0 0;
+}
 .registerButton {
   background: #003366;
   padding: 8px 10px;
