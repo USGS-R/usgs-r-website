@@ -66,23 +66,31 @@ nav{
         z-index:2000;
         }
         
-    a{
-        display:inline-block;
+    li{
         height:40px;
-        width:100%;
         background:#fff;
+        padding-left:10px;
         border-bottom:@darkBlueBorder;
         
         &:focus{
             background:@primaryColor;
+            }
+            
+        &:focus a{
             color:#fff;
             }
         }
         
-    li{
-        padding:10px;
+    a{
+        display:inline-block;
         height:20px;
+        width:100%;
+        padding:10px 0;
         }
+    }
+    
+#trainingDropdown{
+   display:none;
     }
     
 #menu{
@@ -213,7 +221,7 @@ p.nextToLink{
     
 .repos p.repoDescription{
     font-size:.8em;
-    margin:5px 20px 5px 10px;
+    margin:5px 22px 5px 10px;
     }
     
 .repos:after{
@@ -483,7 +491,7 @@ display: block;
     color:@rCodePunctuations;
     }
     
-@media screen and (min-width:686px){
+@media screen and (min-width:768px){
     
 #twitter-widget-0{
     display:block !important;
@@ -554,33 +562,77 @@ nav{
         display:none;
         }
     
-    ul{
+    > ul{
         display:block !important;
         position:static;
         }
         
-    a{
-        width:100px;
+    li{
         height:35px;
-        display:block;
-        float:left;
-        border-bottom:none;
+        width:103px;
+        background:@primaryColor;
         border-right:@whiteBorder;
+        border-bottom:none;
+        float:left;
         text-align:center;
-        color:#fff;
-        background:none;
+        padding-left:0;
         
         &:hover{
             background:#fff;
+            }
+            
+        &:hover a{
             color:@primaryColor;
             }
-        }
+    }
         
-    li{
+    a{
+        
+        height:35px;
+        display:block;
+        color:#fff;
+        background:none;
         padding:6px 0 0 0;
-        height:29px;
         }
     }
+    
+.mobileLinks{
+    display:none;
+    }
+    
+.shower:hover #trainingDropdown{
+    display:block;
+    }
+    
+#trainingDropdown{
+    display:none;
+    width:230px;
+    min-height:50px;
+    margin-top:-5px;
+    box-shadow:2px 2px 5px rgba(0,0,0,.2);
+   
+   li{
+       width:100%;
+       height:40px;
+       background:#fff;
+       text-align:left;
+       border-right:none;
+       
+       &:hover{
+           background:@primaryColor;
+           }
+           
+        &:hover a{
+           color:#fff;
+           }
+       }
+       
+     a{
+         padding:10px 0 10px 10px;
+         color:@primaryColor;
+         }
+    }
+    
     
 /*========index css========*/
 
