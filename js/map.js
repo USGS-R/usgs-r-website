@@ -49,12 +49,6 @@ var tampa = L.marker([28.0149678, -82.422698], {icon: redIcon}).addTo(map);
 //Popups for future event locations 
 tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>Sept 13-15, 2016</p>");
 
-//Group of places trainings have been given already
-//var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort]).addTo(map);
-
-//Group of places that training are going to be in the future
-//var willBe = L.layerGroup([tampa]).addTo(map);
-
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
