@@ -593,3 +593,15 @@ pre code {
 /*media query*/
 
 /*# sourceMappingURL=style.css.map */
+
+.legend {
+			text-align: left;
+			padding: 6px 8px;
+			line-height: 18px;
+			color: #555;
+			background: rgba(255,255,255,0.8);
+			border-radius: 5px;
+		}
+.legend img {
+	height: 30px;
+}
