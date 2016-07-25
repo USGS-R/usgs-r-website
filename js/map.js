@@ -49,6 +49,10 @@ var tampa = L.marker([28.0149678, -82.422698], {icon: redIcon}).addTo(map);
 //Popups for future event locations 
 tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>Sept 13-15, 2016</p>");
 
+//Grouping icons for layer switcher
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort]).addTo(map);
+var willBe = L.layerGroup([tampa]).addTo(map);
+
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -69,4 +73,16 @@ div.innerHTML += '<img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers
 return div;
 }
 legend.addTo(map);
+
+// layer toggle
+// Use basemaps instead of overlays because basemaps allows only one to be on at a time, and we always want one to be on. swap basemaps with overlays if you want checkboxes. collapsed false refers to the toggle not being hidden initially
+var overlays = {
+  "Upcoming Events": willBe,
+  "Past Events": hasBeens
+};
+var layerControl = L.control.layers(null, overlays, {
+  collapsed: false
+});
+map.addControl(layerControl);
+
 });
