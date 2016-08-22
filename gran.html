@@ -69,13 +69,14 @@ The objective of GRAN is to facilitate engagement and R tool sharing across the 
                 
                 <ol class="granNumberList">
 				
-				<li><h4>Alter the Rprofile.site file</h4>
+				<li><h4>Alter the .Rprofile file</h4>
 This will tell your R environment to always look in the GRAN repository when installing packages and updating packages. This is the preferred method because of the ability to automatically get GRAN updates. The following command in R will run a script to update your Rprofile file:</li>
 
 <pre class="language-Rcode" >
 <code class="language-Rcode">
 rprofile_path = file.path(Sys.getenv(<span class="string">"HOME"</span>)<span class="punctuation">,</span> <span class="string">".Rprofile"</span>)
-write(<span class="string">'\noptions(repos=c(getOption(\'repos\'), 
+write(<span class="string">'\noptions(repos=c(getOption(\'repos\'),
+    CRAN=\'https://cloud.r-project.org\',
     USGS=\'http://owi.usgs.gov/R\'))\n'</span><span class="punctuation">,</span>
       rprofile_path<span class="punctuation">,</span> 
       append <span class="punctuation">=</span>  <span class="variable">TRUE</span>)
