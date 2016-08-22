@@ -77,7 +77,7 @@ This will tell your R environment to always look in the GRAN repository when ins
 rprofile_path = file.path(Sys.getenv(<span class="string">"HOME"</span>)<span class="punctuation">,</span> <span class="string">".Rprofile"</span>)
 write(<span class="string">'\noptions(repos=c(getOption(\'repos\'),
     CRAN=\'https://cloud.r-project.org\',
-    USGS=\'http://owi.usgs.gov/R\'))\n'</span><span class="punctuation">,</span>
+    USGS=\'https://owi.usgs.gov/R\'))\n'</span><span class="punctuation">,</span>
       rprofile_path<span class="punctuation">,</span> 
       append <span class="punctuation">=</span>  <span class="variable">TRUE</span>)
 
@@ -106,7 +106,7 @@ This will tell install.packages to look at a specific url for package installati
 									
 <pre class="language-Rcode">
 <code class="language-Rcode">
-install.packages(<span class="string">"smwrData"</span>, <span class="variable">repos</span><span class="punctuation">=</span>c(<span class="string">"http://owi.usgs.gov/R"</span><span class="punctuation">,</span>getOption(<span class="string">"repos"</span>)))
+install.packages(<span class="string">"smwrData"</span>, <span class="variable">repos</span><span class="punctuation">=</span>c(<span class="string">"https://owi.usgs.gov/R"</span><span class="punctuation">,</span>getOption(<span class="string">"repos"</span>)))
 </code>
 </pre>
 				</ol>
@@ -126,7 +126,7 @@ install.packages(<span class="string">"smwrData"</span>, <span class="variable">
 
 <pre class="language-Rcode" >
 <code class="language-Rcode">
-GRAN_pkg <- available.packages(contrib.url(<span class="string">"http://owi.usgs.gov/R"</span>))
+GRAN_pkg <- available.packages(contrib.url(<span class="string">"https://owi.usgs.gov/R"</span>))
 names(GRAN_pkg[,1])
 </code>
 </pre>
