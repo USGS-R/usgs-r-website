@@ -15,6 +15,8 @@ library(dplyr)
 library(jsonlite)
 
 # browser will open requiring you to authenticate
+gs_auth(new_user=TRUE)
+
 # pull in the correct google sheet
 sheet_found <- gs_ls("Post-Workshop")
 
@@ -44,7 +46,7 @@ data_eh <- data_feedback %>%
   sample_n(1)  
 
 data_website <- rbind(data_good, data_eh) %>% 
-  sample_n(6)
+  sample_n(8)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/postworkshop.json")
