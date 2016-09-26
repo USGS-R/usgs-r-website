@@ -17,7 +17,10 @@ library(googlesheets)
 library(dplyr)
 library(jsonlite)
 
-# browser will open requiring you to authenticate (first time you run this)
+# browser will open requiring you to authenticate
+gs_auth(new_user=TRUE)
+
+# pull in the correct google sheet
 sheet_found <- gs_ls()
 
 # register the spreadsheet by title (must occur in order to read it in)
