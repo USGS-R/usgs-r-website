@@ -36,22 +36,31 @@ var mtwsc = L.marker([46.584066, -112.042416], {icon: blueIcon}).addTo(map);
 
 var fort = L.marker([40.559101, -105.082592], {icon: blueIcon}).addTo(map);
 
+var tampa = L.marker([28.0149678, -82.422698], {icon: blueIcon}).addTo(map);
+
 //Popups for past event locations
 flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
 nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees</p>");
 egsc.bindPopup("<h4>Eastern Geographic Science Center</h4><p>20 Attendees</p>");
 mtwsc.bindPopup("<h4>Wyoming-Montana Water Science Center</h4><p>16 Attendees</p>");
 fort.bindPopup("<h4>Fort Collins Science Center</h4><p>29 Attendees</p>");
+tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>18 Attendees</p>");
 
 //Marker locations for future events
-var tampa = L.marker([28.0149678, -82.422698], {icon: redIcon}).addTo(map);
+var lmgwsctn = L.marker([36.149729, -86.781161], {icon: redIcon}).addTo(map);
+var lmgwscar = L.marker([34.732714, -92.292645], {icon: redIcon}).addTo(map);
+var crrl = L.marker([45.710307, -121.660068], {icon: redIcon}).addTo(map);
+var sawscnc = L.marker([35.779142, -78.638706], {icon: redIcon}).addTo(map);
 
 //Popups for future event locations 
-tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>Sept 13-15, 2016</p>");
+lmgwsctn.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Nashville, TN</h4><p>Oct 11-13, 2016</p>");
+lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Rock, AR</h4><p>Oct 25-27, 2016</p>");
+crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>Nov 1-3, 2016</p>");
+sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>Feb 7-9, 2017</p>");
 
 //Grouping icons for layer switcher
-var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort]).addTo(map);
-var willBe = L.layerGroup([tampa]).addTo(map);
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa]).addTo(map);
+var willBe = L.layerGroup([lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
