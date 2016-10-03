@@ -31,7 +31,7 @@ data <- gs_read(sheet_registered, ws="Course_Schedule")
 
 # only return officially scheduled trainings
 data_website <- data %>% 
-  filter(!Schedule_Status %in% c("Tentative", "Complete")) %>%
+  filter(Schedule_Status == "Scheduled") %>%
   mutate(Start = as.Date(Start, "%m/%d/%Y")) %>% 
   mutate(End = as.Date(End, "%m/%d/%Y")) %>% 
   arrange(Start) %>% 
