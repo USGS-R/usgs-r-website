@@ -53,7 +53,7 @@ bar_results <- function(df, colName){
 
 #### How much experience do you have in R?
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=isPre}
 pie_data <- table(course_feedback_pre$How.much.experience.do.you.have.in.R.)
 lbls <- paste(names(pie_data), "\n", pie_data, sep="")
 pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2', 
@@ -62,7 +62,7 @@ pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2',
 
 #### For me, this workshop would be a success if . . .
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=isPre}
 comments_pre <- table_comments(df = course_feedback_pre, 
                                colName = "For.me..this.workshop.would.be.a.success.if......")
 
@@ -73,47 +73,43 @@ htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
 
 #### Overall, how satisfied were you with the R training course you recently attended?
 
-```{r echo=FALSE, fig.height=4, fig.width=8}
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Overall, how satisfied were you with the R training course you recently attended?")
 ```
 
 #### How likely would you be to recommend this course to others?
 
-```{r echo=FALSE, fig.height=4, fig.width=8}
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "How likely would you be to recommend this course to others?")
 ```
 
 #### How appropriate was the 2.5 day length of the workshop? (3=great)
 
-```{r echo=FALSE, fig.height=4, fig.width=8}
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "How appropriate was the 2.5 day length of the workshop? (3=great)")
 ```
 
 #### Was the material taught at a good pace? (3=great)
 
-```{r echo=FALSE, fig.height=4, fig.width=8}
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Was the material taught at a good pace? (3=great)")
 ```
 
 #### Was there enough one-on-one interaction between students and instructor, given the class size?
 
-```{r echo=FALSE, fig.height=4, fig.width=8}
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
             colName = "Was there enough one-on-one interaction between students and instructor, given the class size?")
 ```
 
 #### Is there any additional feedback you would like the instructors of the course to receive?
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval=isPost}
 comments_post <- table_comments(df = course_feedback_post, 
                                 colName = "Is there any additional feedback you would like the instructors of the course to receive? If so, please share below.")
 htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
 ```
-
-
-
-
