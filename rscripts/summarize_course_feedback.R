@@ -1,14 +1,17 @@
 # create summary of google survey results for a specific course
 
-whichTraining <- "Ft. Collins, CO (04/26/2016 thru 04/28/2016)"
+whichTraining <- "LMGWSC, Nashville, TN (10/11/2016 thru 10/13/2016)"
 output <- 'html'
 path <- 'C:/Users/lcarr/usgs-r-website/rscripts'
 
-createCourseSummary <- function(whichTraining, output, path){
+createCourseSummary <- function(whichTraining, output, path, isPre=TRUE, isPost=TRUE){
   library(googlesheets)
   library(rmarkdown)
   
   # browser will open requiring you to authenticate (first time you run this)
+  gs_auth(new_user=TRUE)
+  
+  # list sheets found
   sheet_found <- gs_ls()
   
   #\\#\\# pre-assessment #\\#\\#
@@ -34,6 +37,11 @@ createCourseSummary <- function(whichTraining, output, path){
   return(out_file)
 }
 
+# just pre:
+# createCourseSummary(whichTraining, output, path, isPost=FALSE)
 
+# just post:
+# createCourseSummary(whichTraining, output, path, isPre=FALSE)
+
+# both
 createCourseSummary(whichTraining, output, path)
-
