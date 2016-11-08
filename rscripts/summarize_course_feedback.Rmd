@@ -1,8 +1,23 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r define_course, include=FALSE}
+# run gs_auth() and authenticate before knitting this 
+whichTraining <- "CRRL, Cook, WA (11/01/2016 thru 11/03/2016)"
+isPre <- TRUE
+isPost <- TRUE
+isInstructorReport <- FALSE
+isProjectTime <- TRUE
+```
+
 # Course Feedback Summary
 ##### `r format(Sys.time(), "%b %d, %Y") `
 ##### `r whichTraining `
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, eval=F}
 library(googlesheets)
 library(dplyr)
 library(ggplot2)
@@ -12,20 +27,41 @@ library(htmlTable)
 ```
 
 
-```{r get_current_feedback, echo=FALSE, message=FALSE}
+```{r get_current_feedback, echo=FALSE, message=FALSE, eval=F}
+
+# browser will open requiring you to authenticate (first time you run this)
+gs_auth()
+
+# list sheets found
+sheet_found <- gs_ls()
+
 #\\#\\# pre-assessment #\\#\\#
-
-##fix invalid characters (square brackets) in column names
-valid_column_names <- make.names(names=names(preData), unique=TRUE, allow_ = TRUE)
-names(preData) <- valid_column_names
-
-course_feedback_pre <- preData %>% 
-  filter(Which.training.will.you.be.attending. == whichTraining)
+if(isPre){
+  # register the spreadsheet by title (must occur in order to read it in)
+  sheet_registered_pre <- gs_title("R Pre-Workshop Assessment (Responses)")
+  
+  # read in the data
+  preData <- gs_read(sheet_registered_pre)
+  
+  #fix invalid characters (square brackets) in column names
+  valid_column_names <- make.names(names=names(preData), unique=TRUE, allow_ = TRUE)
+  names(preData) <- valid_column_names
+  
+  course_feedback_pre <- preData %>% 
+    filter(Which.training.will.you.be.attending. == whichTraining)
+}
 
 #\\#\\# post-assessment #\\#\\#
+if(isPost){
+  # register the spreadsheet by title (must occur in order to read it in)
+  sheet_registered_post <- gs_title("R Post-Workshop Assessment (Responses)")
+  # read in the data
+  postData <- gs_read(sheet_registered_post)
+  
+  course_feedback_post <- postData %>% 
+    filter(`Which training did you attend?` == whichTraining) 
+}
 
-course_feedback_post <- postData %>% 
-  filter(`Which training did you attend?` == whichTraining) 
 ```
 
 
@@ -39,19 +75,19 @@ table_comments <- function(df, colName){
   return(comments)
 }
 
-bar_results <- function(df, colName){
+bar_results <- function(df, colName, lowValLabel=NULL, highValLabel=NULL){
   whichCol <- which(names(df) == colName)
   df[whichCol] <- factor(x = df[[whichCol]], levels = 1:5, ordered = TRUE)
 
   ggplot(data = df, aes(x = df[[whichCol]])) +
-    xlab("") + 
+    xlab(paste(lowValLabel, ">>", highValLabel)) + 
     geom_bar(color = "goldenrod1", fill = "goldenrod1")
 }
 ```
 
-## Pre-workshop Feedback
+## `r if(isPre){ "Pre-workshop Feedback" }`
 
-#### How much experience do you have in R?
+#### `r if(isPre){ "How much experience do you have in R?" }`
 
 ```{r echo=FALSE, eval=isPre}
 pie_data <- table(course_feedback_pre$How.much.experience.do.you.have.in.R.)
@@ -60,7 +96,7 @@ pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2',
                                      'goldenrod1', 'forestgreen'))
 ```
 
-#### For me, this workshop would be a success if . . .
+#### `r if(isPre){ "For me, this workshop would be a success if . . ." }`
 
 ```{r echo=FALSE, eval=isPre}
 comments_pre <- table_comments(df = course_feedback_pre, 
@@ -69,44 +105,140 @@ comments_pre <- table_comments(df = course_feedback_pre,
 htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
 ```
 
-## Post-workshop feedback
+## `r if(isPost){ "Post-workshop Feedback" }`
 
-#### Overall, how satisfied were you with the R training course you recently attended?
-
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
-bar_results(df = course_feedback_post,
-            colName = "Overall, how satisfied were you with the R training course you recently attended?")
-```
-
-#### How likely would you be to recommend this course to others?
+#### `r if(isPost){ "Overall, how satisfied were you with the R training course you recently attended?" } `
 
 ```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "How likely would you be to recommend this course to others?")
+            colName = "Overall, how satisfied were you with the R training course you recently attended?",
+            lowValLabel = "Not satisfied", highValLabel = "Very satisfied")
 ```
 
-#### How appropriate was the 2.5 day length of the workshop? (3=great)
+#### `r if(isPost){ "How likely would you be to recommend this course to others?" } `
 
 ```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "How appropriate was the 2.5 day length of the workshop? (3=great)")
+            colName = "How likely would you be to recommend this course to others?",
+            lowValLabel = "Not likely", highValLabel = "Very likely")
 ```
 
-#### Was the material taught at a good pace? (3=great)
+#### `r if(isPost){ "How appropriate was the 2.5 day length of the workshop?" } `
 
 ```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "Was the material taught at a good pace? (3=great)")
+            colName = "How appropriate was the 2.5 day length of the workshop? (3=great)",
+            lowValLabel = "Too short", highValLabel = "Too long")
 ```
 
-#### Was there enough one-on-one interaction between students and instructor, given the class size?
+#### `r if(isPost){ "Was the material taught at a good pace?" } `
 
 ```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "Was there enough one-on-one interaction between students and instructor, given the class size?")
+            colName = "Was the material taught at a good pace? (3=great)",
+            lowValLabel = "Too slow", highValLabel = "Too fast")
 ```
 
-#### Is there any additional feedback you would like the instructors of the course to receive?
+#### `r if(isPost){ "Was there enough one-on-one interaction between students and instructor, given the class size?" } `
+
+```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "Was there enough one-on-one interaction between students and instructor, given the class size?",
+            lowValLabel = "Enough", highValLabel = "Not enough")
+```
+
+
+#### `r if(isPost && isInstructorReport){ "What did you think about the time spent on each of the topics?" }`
+
+##### `r if(isPost && isInstructorReport){ "Get (dataRetrieval, dataImport)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Get (dataRetrieval, dataImport)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Clean (indexing, dplyr, etc)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Clean (indexing, dplyr, etc)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Analyze (basic statistics)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Analyze (basic statistics)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Analyze (contributed packages)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Analyze (contributed packages)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Visualize (base R)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Visualize (base R)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Visualize (ggplot2)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Visualize (ggplot2)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Reproducible Research (functions, if/else statements, for loops)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Reproducible Research (functions, if/else statements, for loops)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "Reports (knitr)" }`
+
+```{r echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "What did you think about the time spent on each of the topics? [Reports (knitr)]",
+            lowValLabel = "Not enough time", highValLabel = "Too much time")
+```
+
+##### `r if(isPost && isInstructorReport){ "What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?" }`
+
+```{r echo=FALSE, eval=isPost&&isProjectTime}
+comments_post <- table_comments(df = course_feedback_post, 
+                                colName = "What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?")
+htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPost && isProjectTime){ "How useful was the project time?" }`
+
+```{r echo=FALSE, eval=isPost&&isProjectTime, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "How useful was the project time?",
+            lowValLabel = "Not useful", highValLabel = "Very useful")
+```
+
+#### `r if(isPost && isProjectTime){ "What did you gain from the project time?" }`
+
+```{r echo=FALSE, eval=isPost&&isProjectTime}
+comments_post <- table_comments(df = course_feedback_post, 
+                                colName = "What did you gain from the project time?")
+htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPost){ "Is there any additional feedback you would like the instructors of the course to receive?" }`
 
 ```{r echo=FALSE, eval=isPost}
 comments_post <- table_comments(df = course_feedback_post, 
