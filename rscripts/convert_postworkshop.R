@@ -43,7 +43,7 @@ data_good <- data_feedback %>%
 
 data_eh <- data_feedback %>% 
   filter(satisfaction < 4) %>% 
-  sample_n(1)  
+  sample_n(2)  
 
 data_website <- rbind(data_good, data_eh) %>% 
   sample_n(8)
