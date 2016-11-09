@@ -269,8 +269,9 @@ bar_results(df = course_feedback_post,
 #### `r if(isPost && isInstructorReport){ "What did you think about the time spent on each of the topics?" }`
 
 ```{r post_timepertopic, echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+timepertopic_levels <- 1:6
 timepertopic_labels <- c("Way too little time", "Too little time", "Just the right amount of time", 
-                         "Too much time", "Way too much time")
+                         "Too much time", "Way too much time", "Did not cover")
 
 timepertopic_col <- "What did you think about the time spent on each of the topics?"
 timepertopic_colnames <- names(course_feedback_post)[grepl(timepertopic_col, names(course_feedback_post))]
@@ -280,13 +281,13 @@ timepertopic_titles <- gsub(pattern="]", replacement="",
 timepertopic_vars <- data.frame(colname = timepertopic_colnames, title = timepertopic_titles)
 
 invisible(apply(timepertopic_vars, MARGIN=1,
-                FUN = function(t, df, lowValLabel, highValLabel, labels){
+                FUN = function(t, df, lowValLabel, highValLabel, levels, labels){
                    bar_results(df, colName=t['colname'], lowValLabel, highValLabel, 
-                               labels = labels, plot_title=t['title'])
+                               levels = levels, labels = labels, plot_title=t['title'])
                  }, 
                 df = course_feedback_post,
                 lowValLabel = "Not enough time", highValLabel = "Too much time",
-                labels = timepertopic_labels))
+                levels = timepertopic_levels, labels = timepertopic_labels))
 ```
 
 ##### `r if(isPost && isInstructorReport){ "What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?" }`
