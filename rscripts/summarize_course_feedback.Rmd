@@ -1,7 +1,7 @@
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r define_course, include=FALSE, message=FALSE, warning=FALSE}
@@ -11,9 +11,9 @@ output:
 token <- 'googlesheets_token.rds'
 
 whichTraining <- "CRRL, Cook, WA (11/01/2016 thru 11/03/2016)"
-isPre <- FALSE
+isPre <- TRUE
 isPost <- TRUE
-isInstructorReport <- TRUE
+isInstructorReport <- FALSE
 isProjectTime <- TRUE
 ```
 
@@ -30,56 +30,6 @@ library(pander)
 library(htmlTable)
 
 opts_chunk$set(echo=FALSE,message=FALSE, warning=FALSE)
-
-cat("\n\n")
-```
-
-##### Table of Contents 
-
-```{r results='asis', eval=isPre} 
-cat("- [How much experience do you have in R?](#pre_experience)")
-cat("\n")
-
-if(isInstructorReport){
-  cat("- [Which of these skills do you want us to emphasize during the workshop?](#pre_skillemphasis)")
-  cat("\n")
-  cat("- [How long would it take you to do the following in R?](#pre_timepertopic)")
-  cat("\n")
-}
-
-cat("- [For me, this workshop would be a success if . . .](#pre_successif)")
-cat("\n")
-```
-
-```{r results='asis', eval=isPost} 
-
-cat("- [Overall, how satisfied were you with the R training course you recently attended?](#post_overall)")
-cat("\n")
-cat("- [How likely would you be to recommend this course to others?](#post_recommend)")
-cat("\n")
-cat("- [How appropriate was the 2.5 day length of the workshop?](#post_length)")
-cat("\n")
-cat("- [Was the material taught at a good pace?](#post_pace)")
-cat("\n")
-cat("- [Was there enough one-on-one interaction between students and instructor, given the class size?](#post_interaction)")
-cat("\n")
-
-if(isInstructorReport){
-  cat("- [What did you think about the time spent on each of the topics?](#post_timepertopic)")
-  cat("\n")
-  cat("- [What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?](#post_notcovered)")
-  cat("\n")
-}
-
-if(isProjectTime){
-  cat("- [How useful was the project time?](#post_projectuseful)")
-  cat("\n")
-  cat("- [What did you gain from the project time?](#post_projectgain)")
-  cat("\n")
-}
-
-cat("- [Is there any additional feedback you would like the instructors of the course to receive?](#post_comments)")
-cat("\n")
 ```
 
 ```{r get_current_feedback, echo=FALSE, message=FALSE}
@@ -125,6 +75,17 @@ if(isPost){
 
 ```{r plot_setup, echo=FALSE}
 
+get_links <- function(links, pattern){
+  which_ids <- grep(pattern, links)
+  if(length(which_ids) > 1){
+    range_ids <- seq(from=which_ids[1], to=which_ids[2])
+  } else {
+    range_ids <- which_ids
+  }
+  links_i <- links[range_ids]
+  return(cat(links_i))
+}
+
 table_comments <- function(df, colName){
   whichCol <- which(names(df) == colName)
   comments <- df[,whichCol]
@@ -152,10 +113,61 @@ bar_results <- function(df, colName, lowValLabel=NULL, highValLabel=NULL,
   bar_results_plot <- ggplot(data = df, aes(x = df[[whichCol]])) +
     xlab(paste(lowValLabel, highValLabel, sep=sepchar)) + 
     geom_bar(color = "goldenrod1", fill = "goldenrod1") +
-    ggtitle(plot_title)
+    ggtitle(plot_title) + 
+    scale_x_discrete(drop=FALSE)
   
   print(bar_results_plot)
 }
+```
+
+##### Table of Contents 
+
+```{r results='asis', eval=isPre} 
+cat("###### Pre Workshop \n")
+
+colnames_pre <- names(course_feedback_pre)
+ids_pre <- colnames_pre[-c(1:3)] # eliminate timestamp, email, and course
+ids_pre <- unique(gsub(pattern="\\.{3,}.+", replacement="", ids_pre)) # remove variations of same question
+ids_pre <- gsub(pattern="\\.$", replacement="", ids_pre) # remove end period if it exists
+titles_pre <- paste0(gsub("\\.", replacement=" ", gsub("\\.{2}", replacement=", ", ids_pre)), "?")
+ids_pre <- tolower(gsub(pattern="\\.+", replacement="-", ids_pre)) # make everything lower case
+links_pre <- paste0("- [", titles_pre, "](#", ids_pre, ") \n")
+
+get_links(links_pre, 'how-much-experience')
+
+if(isInstructorReport){
+  get_links(links_pre, 'emphasize|how-long-would-it-take-you')
+}
+
+get_links(links_pre, 'success')
+```
+
+```{r results='asis', eval=isPost} 
+cat("###### Post Workshop \n")
+
+colnames_post <- names(course_feedback_post)
+ids_post <- colnames_post[-c(1:3)] # eliminate timestamp, email, and course
+ids_post <- ids_post[-grep("individual|Appropriate", ids_post)] # remove columns I don't want to use
+ids_post <- gsub(pattern="[^?]+$", replacement="", ids_post) # remove everything after ? 
+ids_post <- unique(ids_post) # get single entry for each question
+titles_post <- ids_post
+ids_post <- gsub(pattern="[?]", replacement="", ids_post)
+ids_post <- gsub(pattern="[,]|\\s", replacement="-", ids_post) #replace punctuation/spaces 
+ids_post <- gsub(pattern="[-]+", replacement="-", ids_post) # no double dashes
+ids_post <- tolower(ids_post) # make everything lower case separated by dashes
+links_post <- paste0("- [", titles_post, "](#", ids_post, ") \n")
+
+get_links(links_post, 'overall|interaction')
+
+if(isInstructorReport){
+  get_links(links_post, 'time-spent-on-each|were-not-covered')
+}
+
+if(isProjectTime){
+  get_links(links_post, 'useful-was-the-project|improved-about-the-project')
+}
+
+get_links(links_post, 'any-additional-feedback')
 ```
 
 ## `r if(isPre){ "Pre-workshop Feedback" }`
@@ -214,7 +226,16 @@ invisible(apply(timeittakes_vars, MARGIN=1,
                 levels = timeittakes_levels))
 ```
 
-#### `r if(isPre){ "For me, this workshop would be a success if . . ." }`
+#### `r if(isPre && isInstructorReport){ "Is there a specific project you d like to use R for?" }`
+
+```{r pre_specificproject, echo=FALSE, eval=isPre}
+comments_pre <- table_comments(df = course_feedback_pre, 
+                               colName = "Is.there.a.specific.project.you.d.like.to.use.R.for..Please.tell.us.about.it.")
+
+htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPre){ "For me, this workshop would be a success if?" }`
 
 ```{r pre_successif, echo=FALSE, eval=isPre}
 comments_pre <- table_comments(df = course_feedback_pre, 
