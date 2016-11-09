@@ -1,35 +1,90 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r define_course, include=FALSE, message=FALSE, warning=FALSE}
+# run these lines to save the google token before knitting this 
+# token <- gs_auth(new_user=T)
+# saveRDS(token, file = 'googlesheets_token.rds')
+token <- 'googlesheets_token.rds'
+
+whichTraining <- "CRRL, Cook, WA (11/01/2016 thru 11/03/2016)"
+isPre <- TRUE
+isPost <- TRUE
+isInstructorReport <- FALSE
+isProjectTime <- TRUE
+```
+
 # Course Feedback Summary
 ##### `r format(Sys.time(), "%b %d, %Y") `
 ##### `r whichTraining `
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
 library(googlesheets)
 library(dplyr)
 library(ggplot2)
 library(knitr)
 library(pander)
 library(htmlTable)
+
+opts_chunk$set(echo=FALSE,message=FALSE, warning=FALSE)
 ```
 
-
 ```{r get_current_feedback, echo=FALSE, message=FALSE}
+gs_auth(token)
+
+# list sheets found
+sheet_found <- gs_ls()
+
 #\\#\\# pre-assessment #\\#\\#
-
-##fix invalid characters (square brackets) in column names
-valid_column_names <- make.names(names=names(preData), unique=TRUE, allow_ = TRUE)
-names(preData) <- valid_column_names
-
-course_feedback_pre <- preData %>% 
-  filter(Which.training.will.you.be.attending. == whichTraining)
+if(isPre){
+  # register the spreadsheet by title (must occur in order to read it in)
+  sheet_registered_pre <- gs_title("R Pre-Workshop Assessment (Responses)")
+  
+  # read in the data
+  preData <- gs_read(sheet_registered_pre)
+  
+  #fix invalid characters (square brackets) in column names
+  valid_column_names <- make.names(names=names(preData), unique=TRUE, allow_ = TRUE)
+  names(preData) <- valid_column_names
+  
+  course_feedback_pre <- preData %>% 
+    filter(Which.training.will.you.be.attending. == whichTraining)
+}
 
 #\\#\\# post-assessment #\\#\\#
-
-course_feedback_post <- postData %>% 
-  filter(`Which training did you attend?` == whichTraining) 
+if(isPost){
+  # register the spreadsheet by title (must occur in order to read it in)
+  sheet_registered_post <- gs_title("R Post-Workshop Assessment (Responses)")
+  # read in the data
+  postData <- gs_read(sheet_registered_post)
+  
+  course_feedback_post <- postData %>% 
+    filter(`Which training did you attend?` == whichTraining) %>%
+    #get these columns just as numbers.
+    mutate_at(., 
+              vars(contains("What did you think about the time spent on each of the topics?")), 
+              gsub,
+              pattern = '[^0-9]', replacement="") 
+  
+}
 ```
 
 
 ```{r plot_setup, echo=FALSE}
+
+get_links <- function(links, pattern){
+  which_ids <- grep(pattern, links)
+  if(length(which_ids) > 1){
+    range_ids <- seq(from=which_ids[1], to=which_ids[2])
+  } else {
+    range_ids <- which_ids
+  }
+  links_i <- links[range_ids]
+  return(cat(links_i))
+}
 
 table_comments <- function(df, colName){
   whichCol <- which(names(df) == colName)
@@ -39,76 +94,250 @@ table_comments <- function(df, colName){
   return(comments)
 }
 
-bar_results <- function(df, colName){
+bar_results <- function(df, colName, lowValLabel=NULL, highValLabel=NULL, 
+                        levels=NULL, labels=NULL, plot_title=""){
+  # levels for post-workshop answers are 1-5, but pre-workshop needs special levels defined
+  if(is.null(levels)){
+    levels <- 1:5
+  }
+  
+  if(is.null(labels)){
+    labels <- levels
+  }
+  
+  sepchar <- ifelse(!is.null(lowValLabel), " >> ", "")
+  
   whichCol <- which(names(df) == colName)
-  df[whichCol] <- factor(x = df[[whichCol]], levels = 1:5, ordered = TRUE)
+  df[whichCol] <- factor(x = df[[whichCol]], levels = levels, labels = labels, ordered = TRUE)
 
-  ggplot(data = df, aes(x = df[[whichCol]])) +
-    xlab("") + 
-    geom_bar(color = "goldenrod1", fill = "goldenrod1")
+  bar_results_plot <- ggplot(data = df, aes(x = df[[whichCol]])) +
+    xlab(paste(lowValLabel, highValLabel, sep=sepchar)) + 
+    geom_bar(color = "goldenrod1", fill = "goldenrod1") +
+    ggtitle(plot_title) + 
+    scale_x_discrete(drop=FALSE)
+  
+  print(bar_results_plot)
 }
 ```
 
-## Pre-workshop Feedback
+##### Table of Contents 
 
-#### How much experience do you have in R?
+```{r results='asis', eval=isPre} 
+cat("###### Pre Workshop \n")
 
-```{r echo=FALSE, eval=isPre}
+colnames_pre <- names(course_feedback_pre)
+ids_pre <- colnames_pre[-c(1:3)] # eliminate timestamp, email, and course
+ids_pre <- unique(gsub(pattern="\\.{3,}.+", replacement="", ids_pre)) # remove variations of same question
+ids_pre <- gsub(pattern="\\.$", replacement="", ids_pre) # remove end period if it exists
+titles_pre <- paste0(gsub("\\.", replacement=" ", gsub("\\.{2}", replacement=", ", ids_pre)), "?")
+ids_pre <- tolower(gsub(pattern="\\.+", replacement="-", ids_pre)) # make everything lower case
+links_pre <- paste0("- [", titles_pre, "](#", ids_pre, ") \n")
+
+get_links(links_pre, 'how-much-experience')
+
+if(isInstructorReport){
+  get_links(links_pre, 'emphasize|how-long-would-it-take-you')
+}
+
+get_links(links_pre, 'success')
+```
+
+```{r results='asis', eval=isPost} 
+cat("###### Post Workshop \n")
+
+colnames_post <- names(course_feedback_post)
+ids_post <- colnames_post[-c(1:3)] # eliminate timestamp, email, and course
+ids_post <- ids_post[-grep("individual|Appropriate", ids_post)] # remove columns I don't want to use
+ids_post <- gsub(pattern="[^?]+$", replacement="", ids_post) # remove everything after ? 
+ids_post <- unique(ids_post) # get single entry for each question
+titles_post <- ids_post
+ids_post <- gsub(pattern="[?]", replacement="", ids_post)
+ids_post <- gsub(pattern="[,]|\\s", replacement="-", ids_post) #replace punctuation/spaces 
+ids_post <- gsub(pattern="[-]+", replacement="-", ids_post) # no double dashes
+ids_post <- tolower(ids_post) # make everything lower case separated by dashes
+links_post <- paste0("- [", titles_post, "](#", ids_post, ") \n")
+
+get_links(links_post, 'overall|interaction')
+
+if(isInstructorReport){
+  get_links(links_post, 'time-spent-on-each|were-not-covered')
+}
+
+if(isProjectTime){
+  get_links(links_post, 'useful-was-the-project|improved-about-the-project')
+}
+
+get_links(links_post, 'any-additional-feedback')
+```
+
+## `r if(isPre){ "Pre-workshop Feedback" }`
+
+#### `r if(isPre){ "How much experience do you have in R?" }`
+
+```{r pre_experience, echo=FALSE, eval=isPre, fig.height=4, fig.width=8}
 pie_data <- table(course_feedback_pre$How.much.experience.do.you.have.in.R.)
 lbls <- paste(names(pie_data), "\n", pie_data, sep="")
 pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2', 
                                      'goldenrod1', 'forestgreen'))
 ```
 
-#### For me, this workshop would be a success if . . .
+#### `r if(isPre && isInstructorReport){ "Which of these skills do you want us to emphasize during the workshop?" }`
 
-```{r echo=FALSE, eval=isPre}
+```{r pre_skillemphasis, echo=FALSE, eval=isPre&&isInstructorReport, fig.height=4, fig.width=8}
+whattoemphasize_levels <- c('Cover the basics', 'Cover the advanced stuff', 
+                      'Cover it all', "Don't bother (I know it already)", 
+                      "Don't bother (not important to me)")
+
+whattoemphasize_col <- "Which.of.these.skills.do.you.want.us.to.emphasize.during.the.workshop..."
+whattoemphasize_colnames <- names(course_feedback_pre)[grepl(whattoemphasize_col, names(course_feedback_pre))]
+whattoemphasize_titles <- gsub(pattern="\\.", replacement=" ", 
+                               gsub(pattern="\\.\\.", replacement=", ", 
+                                    gsub(pattern=whattoemphasize_col, replacement="",
+                                         whattoemphasize_colnames)))
+whattoemphasize_vars <- data.frame(colname = whattoemphasize_colnames, title = whattoemphasize_titles)
+
+invisible(apply(whattoemphasize_vars, MARGIN=1, 
+                FUN = function(w, df, levels){
+                  bar_results(df, colName=w['colname'], levels=levels, plot_title=w['title'])
+                }, 
+                df = course_feedback_pre, 
+                levels = whattoemphasize_levels))
+```
+
+#### `r if(isPre && isInstructorReport){ "How long would it take you to do the following in R?" }`
+
+```{r pre_timepertopic, echo=FALSE, eval=isPre&&isInstructorReport, fig.height=4, fig.width=8}
+timeittakes_levels <- c("Forever (phone a friend)", "3 hours (with the internet)", 
+                     "30 minutes (trial & error)", "5 minutes (easy)")
+
+timeittakes_col <- "How.long.would.it.take.you.to.do.the.following.in.R..."
+timeittakes_colnames <- names(course_feedback_pre)[grepl(timeittakes_col, names(course_feedback_pre))]
+timeittakes_titles <- gsub(pattern="\\.", replacement=" ", 
+                           gsub(pattern="\\.\\.", replacement=", ",
+                                gsub(pattern=timeittakes_col, replacement="", 
+                                     timeittakes_colnames)))
+timeittakes_vars <- data.frame(colname = timeittakes_colnames, title = timeittakes_titles)
+
+invisible(apply(timeittakes_vars, MARGIN=1,
+                FUN = function(t, df, levels){
+                   bar_results(df, colName=t['colname'], levels=levels, plot_title=t['title'])
+                 }, 
+                df = course_feedback_pre, 
+                levels = timeittakes_levels))
+```
+
+#### `r if(isPre && isInstructorReport){ "Is there a specific project you d like to use R for?" }`
+
+```{r pre_specificproject, echo=FALSE, eval=isPre}
+comments_pre <- table_comments(df = course_feedback_pre, 
+                               colName = "Is.there.a.specific.project.you.d.like.to.use.R.for..Please.tell.us.about.it.")
+
+htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPre){ "For me, this workshop would be a success if?" }`
+
+```{r pre_successif, echo=FALSE, eval=isPre}
 comments_pre <- table_comments(df = course_feedback_pre, 
                                colName = "For.me..this.workshop.would.be.a.success.if......")
 
 htmlTable(comments_pre, align = 'l', col.rgroup = c("none", "#E0E0E0"))
 ```
 
-## Post-workshop feedback
+## `r if(isPost){ "Post-workshop Feedback" }`
 
-#### Overall, how satisfied were you with the R training course you recently attended?
+#### `r if(isPost){ "Overall, how satisfied were you with the R training course you recently attended?" } `
 
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+```{r post_overall, echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "Overall, how satisfied were you with the R training course you recently attended?")
+            colName = "Overall, how satisfied were you with the R training course you recently attended?",
+            lowValLabel = "Not satisfied", highValLabel = "Very satisfied")
 ```
 
-#### How likely would you be to recommend this course to others?
+#### `r if(isPost){ "How likely would you be to recommend this course to others?" } `
 
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+```{r post_recommend, echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "How likely would you be to recommend this course to others?")
+            colName = "How likely would you be to recommend this course to others?",
+            lowValLabel = "Not likely", highValLabel = "Very likely")
 ```
 
-#### How appropriate was the 2.5 day length of the workshop? (3=great)
+#### `r if(isPost){ "How appropriate was the 2.5 day length of the workshop?" } `
 
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+```{r post_length, echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "How appropriate was the 2.5 day length of the workshop? (3=great)")
+            colName = "How appropriate was the 2.5 day length of the workshop? (3=great)",
+            lowValLabel = "Too short", highValLabel = "Too long")
 ```
 
-#### Was the material taught at a good pace? (3=great)
+#### `r if(isPost){ "Was the material taught at a good pace?" } `
 
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+```{r post_pace, echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "Was the material taught at a good pace? (3=great)")
+            colName = "Was the material taught at a good pace? (3=great)",
+            lowValLabel = "Too slow", highValLabel = "Too fast")
 ```
 
-#### Was there enough one-on-one interaction between students and instructor, given the class size?
+#### `r if(isPost){ "Was there enough one-on-one interaction between students and instructor, given the class size?" } `
 
-```{r echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
+```{r post_interaction, echo=FALSE, eval=isPost, fig.height=4, fig.width=8}
 bar_results(df = course_feedback_post,
-            colName = "Was there enough one-on-one interaction between students and instructor, given the class size?")
+            colName = "Was there enough one-on-one interaction between students and instructor, given the class size?",
+            lowValLabel = "Enough", highValLabel = "Not enough")
 ```
 
-#### Is there any additional feedback you would like the instructors of the course to receive?
 
-```{r echo=FALSE, eval=isPost}
+#### `r if(isPost && isInstructorReport){ "What did you think about the time spent on each of the topics?" }`
+
+```{r post_timepertopic, echo=FALSE, eval=isPost&&isInstructorReport, fig.height=4, fig.width=8}
+timepertopic_levels <- 1:6
+timepertopic_labels <- c("Way too little time", "Too little time", "Just the right amount of time", 
+                         "Too much time", "Way too much time", "Did not cover")
+
+timepertopic_col <- "What did you think about the time spent on each of the topics?"
+timepertopic_colnames <- names(course_feedback_post)[grepl(timepertopic_col, names(course_feedback_post))]
+timepertopic_titles <- gsub(pattern="]", replacement="", 
+                           gsub(pattern=".+\\[", replacement="", 
+                                timepertopic_colnames))
+timepertopic_vars <- data.frame(colname = timepertopic_colnames, title = timepertopic_titles)
+
+invisible(apply(timepertopic_vars, MARGIN=1,
+                FUN = function(t, df, lowValLabel, highValLabel, levels, labels){
+                   bar_results(df, colName=t['colname'], lowValLabel, highValLabel, 
+                               levels = levels, labels = labels, plot_title=t['title'])
+                 }, 
+                df = course_feedback_post,
+                lowValLabel = "Not enough time", highValLabel = "Too much time",
+                levels = timepertopic_levels, labels = timepertopic_labels))
+```
+
+##### `r if(isPost && isInstructorReport){ "What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?" }`
+
+```{r post_notcovered, echo=FALSE, eval=isPost&&isProjectTime}
+comments_post <- table_comments(df = course_feedback_post, 
+                                colName = "What topics were NOT covered in the course that, if included, would increase the usefulness of the course to you?")
+htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPost && isProjectTime){ "How useful was the project time?" }`
+
+```{r post_projectuseful, echo=FALSE, eval=isPost&&isProjectTime, fig.height=4, fig.width=8}
+bar_results(df = course_feedback_post,
+            colName = "How useful was the project time?",
+            lowValLabel = "Not useful", highValLabel = "Very useful")
+```
+
+#### `r if(isPost && isProjectTime){ "What did you gain from the project time?" }`
+
+```{r post_projectgain, echo=FALSE, eval=isPost&&isProjectTime}
+comments_post <- table_comments(df = course_feedback_post, 
+                                colName = "What did you gain from the project time?")
+htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
+```
+
+#### `r if(isPost){ "Is there any additional feedback you would like the instructors of the course to receive?" }`
+
+```{r post_comments, echo=FALSE, eval=isPost}
 comments_post <- table_comments(df = course_feedback_post, 
                                 colName = "Is there any additional feedback you would like the instructors of the course to receive? If so, please share below.")
 htmlTable(comments_post, align = 'l', col.rgroup = c("none", "#E0E0E0"))
