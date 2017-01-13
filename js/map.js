@@ -54,8 +54,8 @@ var sawscnc = L.marker([35.779142, -78.638706], {icon: redIcon}).addTo(map);
 sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>Feb 7-9, 2017</p>");
 
 //Grouping icons for layer switcher
-var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa]).addTo(map);
-var willBe = L.layerGroup([lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl]).addTo(map);
+var willBe = L.layerGroup([sawscnc]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
