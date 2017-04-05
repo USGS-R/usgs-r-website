@@ -51,15 +51,17 @@ sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p
 
 //Marker locations for future events
 var nycdep = L.marker([41.926718, -73.996485], {icon: redIcon}).addTo(map);
+var cdi = L.marker([39.715289, -105.110882], {icon: redIcon}).addTo(map);
 var pkgdev = L.marker([43.092400, -89.532186], {icon: redIcon}).addTo(map);
 
 //Popups for future event locations 
 nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>Apr 11-13, 2017</p>");
+cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>May 19, 2017</p>");
 pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>June 5-8, 2017</p>");
 
 //Grouping icons for layer switcher
 var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
-var willBe = L.layerGroup([nycdep, pkgdev]).addTo(map);
+var willBe = L.layerGroup([nycdep, cdi, pkgdev]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
