@@ -35,10 +35,11 @@ var tampa = L.marker([28.0149678, -82.422698], {icon: blueIcon}).addTo(map);
 var lmgwsctn = L.marker([36.149729, -86.781161], {icon: blueIcon}).addTo(map);
 var lmgwscar = L.marker([34.732714, -92.292645], {icon: blueIcon}).addTo(map);
 var crrl = L.marker([45.710307, -121.660068], {icon: blueIcon}).addTo(map);
+var sawscnc = L.marker([35.779142, -78.638706], {icon: blueIcon}).addTo(map);
 
 //Popups for past event locations
 flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
-nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees</p>");
+nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees (3/15)</br>23 Attendees (3/17)</p>");
 egsc.bindPopup("<h4>Eastern Geographic Science Center</h4><p>20 Attendees</p>");
 mtwsc.bindPopup("<h4>Wyoming-Montana Water Science Center</h4><p>16 Attendees</p>");
 fort.bindPopup("<h4>Fort Collins Science Center</h4><p>29 Attendees</p>");
@@ -46,16 +47,19 @@ tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>18 Atten
 lmgwsctn.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Nashville, TN</h4><p>15 Attendees</p>");
 lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Rock, AR</h4><p>18 Attendees</p>");
 crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>");
+sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
 
 //Marker locations for future events
-var sawscnc = L.marker([35.779142, -78.638706], {icon: redIcon}).addTo(map);
+var nycdep = L.marker([41.926718, -73.996485], {icon: redIcon}).addTo(map);
+var pkgdev = L.marker([43.092400, -89.532186], {icon: redIcon}).addTo(map);
 
 //Popups for future event locations 
-sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>Feb 7-9, 2017</p>");
+nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>Apr 11-13, 2017</p>");
+pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>June 5-8, 2017</p>");
 
 //Grouping icons for layer switcher
-var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl]).addTo(map);
-var willBe = L.layerGroup([sawscnc]).addTo(map);
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
+var willBe = L.layerGroup([nycdep, pkgdev]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
