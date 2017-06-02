@@ -27,31 +27,41 @@ var map = L.map('map').setView([39.409258, -98.569441],  3);
 	
 //Marker locations for past events
 var flwsc = L.marker([26.077432, -80.247741], {icon: blueIcon}).addTo(map);
-
 var nmwsc = L.marker([35.129985, -106.582949], {icon: blueIcon}).addTo(map);
-
 var egsc = L.marker([38.910566, -77.361228], {icon: blueIcon}).addTo(map);
-
 var mtwsc = L.marker([46.584066, -112.042416], {icon: blueIcon}).addTo(map);
-
 var fort = L.marker([40.559101, -105.082592], {icon: blueIcon}).addTo(map);
+var tampa = L.marker([28.0149678, -82.422698], {icon: blueIcon}).addTo(map);
+var lmgwsctn = L.marker([36.149729, -86.781161], {icon: blueIcon}).addTo(map);
+var lmgwscar = L.marker([34.732714, -92.292645], {icon: blueIcon}).addTo(map);
+var crrl = L.marker([45.710307, -121.660068], {icon: blueIcon}).addTo(map);
+var sawscnc = L.marker([35.779142, -78.638706], {icon: blueIcon}).addTo(map);
 
 //Popups for past event locations
 flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
-nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees</p>");
+nmwsc.bindPopup("<h4>New Mexico Water Science Center</h4><p>16 Attendees (3/15)</br>23 Attendees (3/17)</p>");
 egsc.bindPopup("<h4>Eastern Geographic Science Center</h4><p>20 Attendees</p>");
 mtwsc.bindPopup("<h4>Wyoming-Montana Water Science Center</h4><p>16 Attendees</p>");
 fort.bindPopup("<h4>Fort Collins Science Center</h4><p>29 Attendees</p>");
+tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>18 Attendees</p>");
+lmgwsctn.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Nashville, TN</h4><p>15 Attendees</p>");
+lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Rock, AR</h4><p>18 Attendees</p>");
+crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>");
+sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
 
 //Marker locations for future events
-var tampa = L.marker([28.0149678, -82.422698], {icon: redIcon}).addTo(map);
+var nycdep = L.marker([41.926718, -73.996485], {icon: redIcon}).addTo(map);
+var cdi = L.marker([39.715289, -105.110882], {icon: redIcon}).addTo(map);
+var pkgdev = L.marker([43.092400, -89.532186], {icon: redIcon}).addTo(map);
 
 //Popups for future event locations 
-tampa.bindPopup("<h4>Southwest Florida Water Management District</h4><p>Sept 13-15, 2016</p>");
+nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>Apr 11-13, 2017</p>");
+cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>May 19, 2017</p>");
+pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>June 5-8, 2017</p>");
 
 //Grouping icons for layer switcher
-var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort]).addTo(map);
-var willBe = L.layerGroup([tampa]).addTo(map);
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
+var willBe = L.layerGroup([nycdep, cdi, pkgdev]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

@@ -17,7 +17,10 @@ library(googlesheets)
 library(dplyr)
 library(jsonlite)
 
-# browser will open requiring you to authenticate (first time you run this)
+# browser will open requiring you to authenticate
+gs_auth(new_user=TRUE)
+
+# pull in the correct google sheet
 sheet_found <- gs_ls()
 
 # register the spreadsheet by title (must occur in order to read it in)
@@ -28,7 +31,7 @@ data <- gs_read(sheet_registered, ws="Course_Schedule")
 
 # only return officially scheduled trainings
 data_website <- data %>% 
-  filter(!Schedule_Status %in% c("Tentative", "Complete")) %>%
+  filter(Schedule_Status == "Scheduled") %>%
   mutate(Start = as.Date(Start, "%m/%d/%Y")) %>% 
   mutate(End = as.Date(End, "%m/%d/%Y")) %>% 
   arrange(Start) %>% 
