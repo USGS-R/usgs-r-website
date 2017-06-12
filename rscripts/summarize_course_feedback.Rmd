@@ -12,7 +12,7 @@ token <- 'googlesheets_token.rds'
 
 whichTraining <- "NYC DEP, Kingston, NY (04/11/2017 thru 04/13/2017)"
 isPre <- TRUE
-isPost <- TRUE
+isPost <- FALSE
 isInstructorReport <- TRUE
 isProjectTime <- TRUE
 ```
