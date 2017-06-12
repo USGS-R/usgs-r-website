@@ -36,6 +36,9 @@ var lmgwsctn = L.marker([36.149729, -86.781161], {icon: blueIcon}).addTo(map);
 var lmgwscar = L.marker([34.732714, -92.292645], {icon: blueIcon}).addTo(map);
 var crrl = L.marker([45.710307, -121.660068], {icon: blueIcon}).addTo(map);
 var sawscnc = L.marker([35.779142, -78.638706], {icon: blueIcon}).addTo(map);
+var nycdep = L.marker([41.926718, -73.996485], {icon: blueIcon}).addTo(map);
+var cdi = L.marker([39.715289, -105.110882], {icon: blueIcon}).addTo(map);
+var pkgdev = L.marker([43.092400, -89.532186], {icon: blueIcon}).addTo(map);
 
 //Popups for past event locations
 flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
@@ -48,20 +51,19 @@ lmgwsctn.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Nashville
 lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Rock, AR</h4><p>18 Attendees</p>");
 crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>");
 sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
-
-//Marker locations for future events
-var nycdep = L.marker([41.926718, -73.996485], {icon: redIcon}).addTo(map);
-var cdi = L.marker([39.715289, -105.110882], {icon: redIcon}).addTo(map);
-var pkgdev = L.marker([43.092400, -89.532186], {icon: redIcon}).addTo(map);
-
-//Popups for future event locations 
 nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>Apr 11-13, 2017</p>");
 cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>May 19, 2017</p>");
 pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>June 5-8, 2017</p>");
 
+//Marker locations for future events
+var reston = L.marker([38.946940, -77.367391], {icon: redIcon}).addTo(map);
+
+//Popups for future event locations 
+reston.bindPopup("<h4>Intro to R in Reston, VA</h4><p>August 29-31, 2017</p>");
+
 //Grouping icons for layer switcher
-var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc]).addTo(map);
-var willBe = L.layerGroup([nycdep, cdi, pkgdev]).addTo(map);
+var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc, nycdep, cdi, pkgdev]).addTo(map);
+var willBe = L.layerGroup([reston]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
