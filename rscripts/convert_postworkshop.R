@@ -39,14 +39,14 @@ data_feedback <- data %>%
 
 data_good <- data_feedback %>% 
   filter(satisfaction >= 4) %>% 
-  sample_n(8)
+  sample_n(9)
 
 data_eh <- data_feedback %>% 
   filter(satisfaction < 4) %>% 
-  sample_n(2)  
+  sample_n(3)  
 
 data_website <- rbind(data_good, data_eh) %>% 
-  sample_n(8)
+  sample_n(9)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/postworkshop.json")

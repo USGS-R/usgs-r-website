@@ -51,9 +51,9 @@ lmgwsctn.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Nashville
 lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Rock, AR</h4><p>18 Attendees</p>");
 crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>");
 sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
-nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>Apr 11-13, 2017</p>");
-cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>May 19, 2017</p>");
-pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>June 5-8, 2017</p>");
+nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>18 Attendees</p>");
+cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>7 Attendees</p>");
+pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>6 Attendees</p>");
 
 //Marker locations for future events
 var reston = L.marker([38.946940, -77.367391], {icon: redIcon}).addTo(map);
