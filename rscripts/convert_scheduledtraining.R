@@ -35,7 +35,7 @@ data_website <- data %>%
   mutate(Start = as.Date(Start, "%m/%d/%Y")) %>% 
   mutate(End = as.Date(End, "%m/%d/%Y")) %>% 
   arrange(Start) %>% 
-  select(-Schedule_Status, -Total_Attendees)
+  select(-Position_num, -Schedule_Status, -Total_Attendees)
   
 export_json <- toJSON(data_website)
 write(export_json, "json/scheduledtrainings.json")
