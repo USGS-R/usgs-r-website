@@ -195,7 +195,19 @@ p.nextToLink {
   border-right: 70px solid #003366;
   pointer-events: none;
 }
-.diffColor:after {
+.coreColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #46c124;
+  pointer-events: none;
+}
+.orphanColor:after {
   content: '';
   position: absolute;
   right: 0;
@@ -207,12 +219,36 @@ p.nextToLink {
   border-right: 70px solid #ef5760;
   pointer-events: none;
 }
+.researchColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #5063ce;
+  pointer-events: none;
+}
+.supportColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #ce8250;
+  pointer-events: none;
+}
 p.underDevelopment {
   width: 75px;
   text-align: center;
   font-size: .65em !important;
   position: absolute;
-  top: 6px;
+  top: 12px;
   right: -20px;
   color: #fff;
   -ms-transform: rotate(45deg);
