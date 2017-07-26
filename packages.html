@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+<head>
+
+<!-- ############### VIEWPORT META TAG ############### -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+<!-- ################################################# -->
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+<title>OWI-R</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+
+<link rel="icon" type="image/ico" href="img/favicon.ico"  />
+
+<script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
+<script src="js/handlebars.min_4.0.5.js" type="text/javascript"></script>
+<script src="js/application.js" type="text/javascript"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53797708-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script type="application/javascript" src="//www2.usgs.gov/scripts/analytics/usgs-analytics.js"></script>
+</head>
+
+<body>
+
+	<div id="header"></div>
+
+	<div id="nav"></div>
+
+<!-- BEGIN Main Content -->
+
+<main>
+
+    <article>
+    
+        
+      <h1 class="page-title-h1">USGS-R Packages</h1>
+        
+  		<section class="box content" id="package_intro">
+          
+              <h3>USGS-R Packages</h3>
+              
+<p>Clear communication about package expectations is very important. Package developers should be transparent about the maintenance, development, and user support associated with their package so that potential users are aware. To help with this communication for USGS R packages, we have created the following categories:</p>
+
+<ul>
+  <li><a href="#Core">Core</a></li>
+  <li><a href="#Research">Research (Active and Archive)</a></li>
+  <li><a href="#Support">Support</a></li>
+  <li><a href="#Exploratory">Private/Exploratory</a></li>
+  <li><a href="#Orphan">Orphan</a></li>
+</ul>
+<p>
+Each are described in detail below. In general, they go from most support/outreach ("Core") to least ("Orphan").</p>
+
+<p>
+People with packages on the USGS-R GitHub community and/or GRAN should add a startup message to their pacakge indicating the package category. See <code>?packageStartupMessage</code> to learn how.</p>  
+              
+      </section>
+		
+      <section class="box content" id="Core">
+          
+              <h3>Core</h3>
+<p>
+A package with the designation "Core" has several key features:</p>
+
+
+<ul>
+  <li>Critically important to a wide and general audience</li>
+  <li>Published, peer-reviewed documentation on the package function</li>
+  <li>Long-term support addressed publicly (could be stated in README or elsewhere)</li>
+  <li>Bug-fixes</li>
+  <li>R version upgrades</li>
+  <li>R package dependency changes</li>
+  <li>Customer support and troubleshooting</li>
+  <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
+  <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
+  <li>All external functions should have clear documentation and working examples.</li>
+</ul>
+
+
+<p>
+A user of core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, careful thought to add new features). The general scope of the package should not change over time.  </p>            
+              
+<h3>Example Core Packages</h3>
+  
+  <div id="wrapper" class="grid clearfix">
+      <div id="repoContainer">
+         <a href="https://github.com/USGS-R/dataRetrieval" target="_blank">
+            <div class="repos coreColor">
+              <h2>dataRetrieval</h2>
+              <p class="repoDescription">This R package for downloading and importing USGS and EPA water data.</p>
+              <p class="underDevelopment">Core</p>
+            </div>
+          </a>
+                      
+          <a href="https://github.com/USGS-R/sbtools" target="_blank">
+            <div class="repos coreColor">
+            	<h2>sbtools</h2>
+                <p class="repoDescription">Tools for interfacing R with ScienceBase data services.</p>
+                <p class="underDevelopment">Core</p>
+            </div>
+          </a>
+          <a href="https://github.com/USGS-R/geoknife" target="_blank">
+            <div class="repos coreColor">
+            	<h2>geoknife</h2>
+                <p class="repoDescription">Tools for geo-web processing of gridded data. geoknife slices up data according to overlap with irregular features.</p>
+                <p class="underDevelopment">Core</p>
+            </div>
+        	</a>       
+             
+     </div>
+  </div>
+      </section>
+      
+      <section class="box content" id="Research">
+          
+              <h3>Research</h3>
+              
+              <p>Research packages have two distinct phases: Active and Archive.</p>
+              
+              <h4>Active</h4>
+<p>A package with the designation “Active Research” has several key features:</p>
+
+<ul>
+  <li>The package is in active development and there is no guarantee of future behavior.</li>
+  <li>An official disclaimer is shown on the README and package startup message.</li>
+  <li>The development of the package is being driven by a research topic, and includes input from both researchers and software developers.</li>
+  <li>The end goal should be one or more peer-reviewed journal publications.</li>
+  <li>A "sunset" date should be communicated on the README and package startup message. This is an indication of how far in the future the work for this package is currently supported.
+Emphasis should still be placed on testing key features and good documentation during development.</li>
+  <li>Since the goal is a published article, the expectation should be that outside users will use this package to test the reproducibility of the primary author’s data analysis, as well as reproducing the analysis on new data.</li>
+  <li>During development, the package version should remain below v1.0.0.</li>
+</ul>
+
+<p>It is important to clearly communicate to any known or unknown users the risk they take with using a package that is in the active research development phase.</p>
+      
+      <h3>Example Active Research Packages</h3>
+  <div id="wrapper" class="grid clearfix">
+      <div id="repoContainer">
+          <a href="https://github.com/USGS-R/streamMetabolizer" target="_blank">
+            <div class="repos researchColor">
+            	<h2>streamMetabolizer</h2>
+                <p class="repoDescription">Uses inverse modeling to estimate aquatic metabolism from time series data on dissolved oxygen, water temperature, depth, and light.</p>
+                <p class="underDevelopment">Research</p>
+            </div>
+          </a> 
+          
+          <a href="https://github.com/USGS-R/toxEval" target="_blank">
+            <div class="repos researchColor">
+            	<h2>toxEval</h2>
+                <p class="repoDescription">Initial code for studying ToxCast data in relation to measured.</p>
+                <p class="underDevelopment">Research</p>
+            </div>
+          </a> 
+          
+          <a href="https://github.com/USGS-R/loadflex" target="_blank">
+            <div class="repos researchColor">
+            	<h2>loadflex</h2>
+                <p class="repoDescription">Models and Tools for Watershed Flux Estimates.</p>
+                <p class="underDevelopment">Research</p>
+            </div>
+          </a>
+        
+      </div>
+  </div>
+      
+              
+              <h4>Archive</h4>
+<p>A package with the designation “Archive Research” has several key features:</p>
+
+<ul>
+  <li>Ideally, the development of the active research package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
+  <li>A reproducible work-flow is included either within a vignette or via the final product (such as the journal article)</li>
+  <li>A message on the README indicates the archive status.</li>
+  <li>There are no official expectations that bug fixes and R version upgrades will happen.</li>
+  <li>The package maintainer should have an active email.</li>
+  <li>The package version should be updated to v1.0.0 once a stable version is released.</li>
+</ul>
+
+<p>
+It should be clearly communicated that the package has a well-documented final product. An archived research R-package can certainly maintain development such as bug fixes and required changes to R version updates. Maintaining the package and interacting with users can be very beneficial for professional development. However, it is important to communicate the official level of support for future users.
+</p>
+
+<h3>Example Archive Research Packages</h3>
+  <div id="wrapper" class="grid clearfix">
+      <div id="repoContainer">
+      <a href="https://github.com/USGS-R/EGRET" target="_blank"> 
+        <div class="repos researchColor">
+        	<h2>EGRET</h2>
+            <p class="repoDescription">An R-package for the analysis of long term changes in water quality and streamflow</p>
+            <p class="underDevelopment">Research</p>
+        </div>
+      </a>
+      <a href="https://github.com/USGS-R/EGRETci" target="_blank">
+        <div class="repos researchColor">
+        	<h2>EGRETci</h2>
+            <p class="repoDescription">A bootstrap method for estimating uncertainty of water quality trends.</p>
+            <p class="underDevelopment">Research</p>
+        </div>
+    	</a>           
+        
+        
+    </div>
+  </div>
+      </section>
+      
+      <section class="box content" id="Support">
+          
+              <h3>Support</h3>
+<p>A package with the designation “Infrastructure” may not have a research component, and also not intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best practices in the package development, as well as clearly communicate the intent and level of support for these packages.</p>
+
+<ul>
+  <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
+  <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
+  <li>Key functions should have clear documentation and working examples. </li>
+</ul>
+ 
+<h3>Example Support Packages</h3>
+  <div id="wrapper" class="grid clearfix">
+      <div id="repoContainer">             
+       <a href="https://github.com/USGS-R/gsplot" target="_blank">
+        <div class="repos supportColor">
+        	<h2>gsplot</h2>
+            <p class="repoDescription">plotting foundation for timeseries reporting</p>
+            <p class="underDevelopment">Support</p>
+        </div>
+      </a>
+      <a href="https://github.com/USGS-R/repgen" target="_blank">
+        <div class="repos supportColor">
+        	<h2>repgen</h2>
+            <p class="repoDescription">report generation in R</p>
+            <p class="underDevelopment">Support</p>
+        </div>
+      </a>         
+      <a href="https://github.com/USGS-R/grantools" target="_blank">
+        <div class="repos supportColor">
+        	<h2>grantools</h2>
+            <p class="repoDescription">Tools for the Geological survey R Archive Network</p>
+            <p class="underDevelopment">Support</p>
+        </div>
+      </a>
+      <a href="https://github.com/USGS-R/smwrGraphs" target="_blank">
+      <div class="repos supportColor">
+      	<h2>smwrGraphs</h2>
+          <p class="repoDescription">Graphical USGS water science R functions.</p>
+          <p class="underDevelopment">Support</p>
+      </div>
+      </a> 
+     </div>
+   </div>
+      </section>
+      
+      <section class="box content" id="Exploratory">
+          
+              <h3>Exploratory</h3>
+<p>These packages should remain on personal github repositories or local computers. These packages offer value to only a small number of people for a limited time.</p>              
+              
+              
+      </section>
+      
+            <section class="box content" id="Orphan">
+          
+              <h3>Orphan</h3>
+<p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, and emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on who to contact to volunteer to take over maintainer duties.</p>
+
+<p>
+Training from USGS-sponsored courses should avoid orphan packages until they have designated an active maintainer and have addressed long-term resource commitments. </p>             
+ 
+<h3>Orphan Packages</h3>
+  <p>If you are interested in taking over maintainer status for any of the following packages, please email <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a>.</p>
+  
+  <div id="wrapper" class="grid clearfix">
+      <div id="repoContainer">                
+          <a href="https://github.com/USGS-R/rloadest" target="_blank">
+          <div class="repos orphanColor">
+          	<h2>rloadest</h2>
+              <p class="repoDescription">USGS water science R functions for LOAD ESTimation of constituents in rivers and streams.</p>
+              <p class="underDevelopment">Orphan</p>
+          </div>
+          </a> 
+          
+          <a href="https://github.com/USGS-R/smwrQW" target="_blank">
+          <div class="repos orphanColor">
+          	<h2>smwrQW</h2>
+              <p class="repoDescription">Water quality USGS water science R functions.</p>
+              <p class="underDevelopment">Orphan</p>
+          </div>
+          </a> 
+          <a href="https://github.com/USGS-R/smwrStats" target="_blank">
+          <div class="repos orphanColor">
+          	<h2>smwrStats</h2>
+              <p class="repoDescription">Statistic USGS water science R functions.</p>
+              <p class="underDevelopment">Orphan</p>
+          </div>
+          </a>            
+          <a href="https://github.com/USGS-R/restrend" target="_blank">
+          <div class="repos orphanColor">
+          	<h2>restrend</h2>
+              <p class="repoDescription">USGS water science R functions for EStimate TRENDs.</p>
+              <p class="underDevelopment">Orphan</p>
+          </div>
+          </a>
+          <a href="https://github.com/USGS-R/DVstats" target="_blank">
+          <div class="repos orphanColor">
+          	<h2>DVstats</h2>
+              <p class="repoDescription">USGS water science R functions for the analysis of daily-values data.</p>
+              <p class="underDevelopment">Orphan</p>
+          </div>
+          </a> 
+      </div>
+  </div>
+      </section>
+      
+    </article>
+
+</main>
+
+<!-- END Main Content -->
+
+	<div id="footer"></div>
+
+</body>
+</html>
