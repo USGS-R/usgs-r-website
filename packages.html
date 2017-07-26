@@ -57,7 +57,9 @@
   <li><a href="#Orphan">Orphan</a></li>
 </ul>
 <p>
-Each are described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). People with packages on the USGS-R GitHub community and/or GRAN should add a startup message to their pacakge indicating the package category. See <code>?packageStartupMessage</code> to learn how.</p>  
+Each are described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). See also the section in our "R-package development" training: <a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/maintenance/">maintenance</a> for a deeper conversation on package considerations.
+
+</p>  
               
       </section>
 		
@@ -72,9 +74,9 @@ A package with the designation "Core" has several key features:</p>
   <li>Critically important to a wide and general audience</li>
   <li>Published, peer-reviewed documentation on the package function</li>
   <li>Long-term support addressed publicly (could be stated in README or elsewhere)</li>
-  <li>Bug-fixes</li>
-  <li>R version upgrades</li>
-  <li>R package dependency changes</li>
+  <li>Rapid response to bug fixes</li>
+  <li>Rapid response to R version upgrades</li>
+  <li>Rapid response to R package dependency changes</li>
   <li>Customer support and troubleshooting</li>
   <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
   <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
@@ -94,14 +96,6 @@ A user of core packages can expect prompt feedback from bug reports and general-
               <h2>dataRetrieval</h2>
               <p class="repoDescription">This R package for downloading and importing USGS and EPA water data.</p>
               <p class="underDevelopment">Core</p>
-            </div>
-          </a>
-                      
-          <a href="https://github.com/USGS-R/sbtools" target="_blank">
-            <div class="repos coreColor">
-            	<h2>sbtools</h2>
-                <p class="repoDescription">Tools for interfacing R with ScienceBase data services.</p>
-                <p class="underDevelopment">Core</p>
             </div>
           </a>
           <a href="https://github.com/USGS-R/geoknife" target="_blank">
@@ -131,14 +125,14 @@ A user of core packages can expect prompt feedback from bug reports and general-
   <li>An official disclaimer is shown on the README and package startup message.</li>
   <li>The development of the package is being driven by a research topic, and includes input from both researchers and software developers.</li>
   <li>The end goal should be one or more peer-reviewed journal publications.</li>
-  <li>A "sunset" date should be communicated on the README and package startup message. This is an indication of how far in the future the work for this package is currently supported.
-Emphasis should still be placed on testing key features and good documentation during development.</li>
+  <li>A "sunset" date should be communicated on the README and package startup message. This is an indication of how far in the future the work for this package is currently supported.</li>
+  <li>Emphasis should still be placed on testing key features and good documentation during development.</li>
   <li>Since the goal is a published article, the expectation should be that outside users will use this package to test the reproducibility of the primary author’s data analysis, as well as reproducing the analysis on new data.</li>
   <li>During development, the package version should remain below v1.0.0.</li>
 </ul>
 </div>
 
-<p>It is important to clearly communicate to any known or unknown users the risk they take with using a package that is in the active research development phase.</p>
+<p>It is important to clearly communicate to any known or unknown users the risk they take with using a package that is in the active research development phase. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
       
       <h3>Example Active Research Packages</h3>
   <div id="wrapper" class="grid clearfix">
@@ -232,6 +226,15 @@ It should be clearly communicated that the package has a well-documented final p
 <h3>Example Support Packages</h3>
   <div id="wrapper" class="grid clearfix">
       <div id="repoContainer">             
+                             
+          <a href="https://github.com/USGS-R/sbtools" target="_blank">
+            <div class="repos supportColor">
+            	<h2>sbtools</h2>
+                <p class="repoDescription">Tools for interfacing R with ScienceBase data services.</p>
+                <p class="underDevelopment">Core</p>
+            </div>
+          </a>
+       
        <a href="https://github.com/USGS-R/gsplot" target="_blank">
         <div class="repos supportColor">
         	<h2>gsplot</h2>
