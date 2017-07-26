@@ -57,10 +57,7 @@
   <li><a href="#Orphan">Orphan</a></li>
 </ul>
 <p>
-Each are described in detail below. In general, they go from most support/outreach ("Core") to least ("Orphan").</p>
-
-<p>
-People with packages on the USGS-R GitHub community and/or GRAN should add a startup message to their pacakge indicating the package category. See <code>?packageStartupMessage</code> to learn how.</p>  
+Each are described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). People with packages on the USGS-R GitHub community and/or GRAN should add a startup message to their pacakge indicating the package category. See <code>?packageStartupMessage</code> to learn how.</p>  
               
       </section>
 		
@@ -70,7 +67,7 @@ People with packages on the USGS-R GitHub community and/or GRAN should add a sta
 <p>
 A package with the designation "Core" has several key features:</p>
 
-
+<div id="plain">
 <ul>
   <li>Critically important to a wide and general audience</li>
   <li>Published, peer-reviewed documentation on the package function</li>
@@ -83,7 +80,7 @@ A package with the designation "Core" has several key features:</p>
   <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
   <li>All external functions should have clear documentation and working examples.</li>
 </ul>
-
+</div>
 
 <p>
 A user of core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, careful thought to add new features). The general scope of the package should not change over time.  </p>            
@@ -128,6 +125,7 @@ A user of core packages can expect prompt feedback from bug reports and general-
               <h3>Active</h3>
 <p>A package with the designation “Active Research” has several key features:</p>
 
+<div id="plain">
 <ul>
   <li>The package is in active development and there is no guarantee of future behavior.</li>
   <li>An official disclaimer is shown on the README and package startup message.</li>
@@ -138,6 +136,7 @@ Emphasis should still be placed on testing key features and good documentation d
   <li>Since the goal is a published article, the expectation should be that outside users will use this package to test the reproducibility of the primary author’s data analysis, as well as reproducing the analysis on new data.</li>
   <li>During development, the package version should remain below v1.0.0.</li>
 </ul>
+</div>
 
 <p>It is important to clearly communicate to any known or unknown users the risk they take with using a package that is in the active research development phase.</p>
       
@@ -175,6 +174,7 @@ Emphasis should still be placed on testing key features and good documentation d
               <h3>Archive</h3>
 <p>A package with the designation “Archive Research” has several key features:</p>
 
+<div id="plain">
 <ul>
   <li>Ideally, the development of the active research package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
   <li>A reproducible work-flow is included either within a vignette or via the final product (such as the journal article)</li>
@@ -183,6 +183,7 @@ Emphasis should still be placed on testing key features and good documentation d
   <li>The package maintainer should have an active email.</li>
   <li>The package version should be updated to v1.0.0 once a stable version is released.</li>
 </ul>
+</div>
 
 <p>
 It should be clearly communicated that the package has a well-documented final product. An archived research R-package can certainly maintain development such as bug fixes and required changes to R version updates. Maintaining the package and interacting with users can be very beneficial for professional development. However, it is important to communicate the official level of support for future users.
@@ -220,12 +221,14 @@ It should be clearly communicated that the package has a well-documented final p
               <h4>Support</h4>
 <p>A package with the designation “Infrastructure” may not have a research component, and also not intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best practices in the package development, as well as clearly communicate the intent and level of support for these packages.</p>
 
+<div id="plain">
 <ul>
   <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
   <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
   <li>Key functions should have clear documentation and working examples. </li>
 </ul>
- 
+</div>
+
 <h3>Example Support Packages</h3>
   <div id="wrapper" class="grid clearfix">
       <div id="repoContainer">             

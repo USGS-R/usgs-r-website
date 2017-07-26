@@ -302,6 +302,10 @@ p.underDevelopment {
   padding: 5px 0 5px 10px;
   margin-bottom: -5px;
 }
+#plain ul li {
+    font-weight: 400;
+    font-size: 1.1em;
+}
 .content ul {
   list-style: square;
   padding: 5px 5px 5px 30px;
