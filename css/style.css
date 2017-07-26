@@ -142,6 +142,39 @@ p.nextToLink {
   color: #fff;
   border-radius: 5px 0 0 0;
 }
+
+#research h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #5063ce;
+}
+
+#support h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #ce8250;
+}
+
+#orphan h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #ef5760;
+}
+
+#core h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #46c124;
+}
+
 #newtoR h4 {
   background: #67ba2f;
 }
@@ -154,6 +187,7 @@ p.nextToLink {
 #featured_packages h4 {
   background: #003366;
 }
+
 #repoContainer {
   width: 100%;
   min-height: 100px;
@@ -267,6 +301,10 @@ p.underDevelopment {
 .content h3 {
   padding: 5px 0 5px 10px;
   margin-bottom: -5px;
+}
+#plain ul li {
+    font-weight: 400;
+    font-size: 1.1em;
 }
 .content ul {
   list-style: square;
