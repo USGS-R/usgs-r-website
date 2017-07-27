@@ -57,7 +57,7 @@
   <li><a href="#orphan">Orphan</a></li>
 </ul>
 <p>
-Each are described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). See also the section in our "R-package development" training: <a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/maintenance/">maintenance</a> for a deeper conversation on package considerations.
+Each is described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). See also the <a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/maintenance/">maintenance</a> section in our "R-package development" training:  for a deeper conversation on package considerations.
 
 </p>  
               
@@ -72,20 +72,21 @@ A package with the designation "Core" has several key features:</p>
 <div id="plain">
 <ul>
   <li>Critically important to a wide and general audience</li>
-  <li>Published, peer-reviewed documentation on the package function</li>
+  <li>Published, peer-reviewed documentation on the package</li>
   <li>Long-term support addressed publicly (could be stated in README or elsewhere)</li>
   <li>Rapid response to bug fixes</li>
   <li>Rapid response to R version upgrades</li>
   <li>Rapid response to R package dependency changes</li>
-  <li>Customer support and troubleshooting</li>
-  <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
-  <li>The package should be well tested, and the package should be tested on a continuous integration platform regularly.</li>
-  <li>All external functions should have clear documentation and working examples.</li>
+  <li>User support and troubleshooting</li>
+  <li>An active USGS employee is designated as maintainer.</li>
+  <li>Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
+  <li>The package is well tested, and the package should be tested on a continuous integration platform regularly.</li>
+  <li>All external functions has clear documentation and working examples.</li>
 </ul>
 </div>
 
 <p>
-A user of core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, careful thought to add new features). The general scope of the package should not change over time.  </p>            
+A user of core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, give careful thought to adding new features). The general scope of the package should not change over time.  </p>            
               
 <h3>Example Core Packages</h3>
   
@@ -114,7 +115,11 @@ A user of core packages can expect prompt feedback from bug reports and general-
           
               <h4>Research</h4>
               
-              <p>Research packages have three distinct phases: Active, Archive, and Exploratory.</p>
+              <p>Research packages have three distinct phases: Exploratory, Active, and Archive</p>
+              
+                
+  <h3>Exploratory</h3>
+  <p>Package development may include an exploratory phase when it's unclear whether an idea will ever become an active, publicly supported package. These packages should remain on personal github repositories or local computers. These packages offer value to only a small number of people for a limited time.</p>
               
               <h3>Active</h3>
 <p>A package with the designation “Active Research” has several key features:</p>
@@ -176,6 +181,7 @@ A user of core packages can expect prompt feedback from bug reports and general-
   <li>There are no official expectations that bug fixes and R version upgrades will happen.</li>
   <li>The package maintainer should have an active email.</li>
   <li>The package version should be updated to v1.0.0 once a stable version is released.</li>
+  <li>Once the final version is released, the maintainer should provide the output of <code>devtools::session_info()</code> for an archive of the environment in which the code was last tested and verified as stable.</li>
 </ul>
 </div>
 
@@ -204,16 +210,12 @@ It should be clearly communicated that the package has a well-documented final p
         
     </div>
   </div>
-  
-  <h3>Exploratory</h3>
-  <p>These packages should remain on personal github repositories or local computers. These packages offer value to only a small number of people for a limited time.</p>
-  
       </section>
       
       <section class="box content" id="support">
           
               <h4>Support</h4>
-<p>A package with the designation “Infrastructure” may not have a research component, and also not intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best practices in the package development, as well as clearly communicate the intent and level of support for these packages. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
+<p>A package with the designation "Support" may not have a research component, and also may not be intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best practices in the package development, as well as clearly communicate the intent and level of support for these packages. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
 
 <div id="plain">
 <ul>
@@ -272,13 +274,13 @@ It should be clearly communicated that the package has a well-documented final p
           
       <h4>Orphan</h4>
       
-<p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, and emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on who to contact to volunteer to take over maintainer duties.</p>
+<p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, and emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on whom to contact to volunteer to take over maintainer duties.</p>
 
 <p>
 Training from USGS-sponsored courses should avoid orphan packages until they have designated an active maintainer and have addressed long-term resource commitments. </p>             
  
 <h3>Orphan Packages</h3>
-  <p>If you are interested in taking over maintainer status for any of the following packages, please email <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a>. USGS-R admins will make a strong effort to communicate the status of orhpan packages.</p>
+  <p>If you are interested in taking over maintainer status for any of the following packages, please email <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a>. USGS-R admins will make a strong effort to communicate the status of orphan packages.</p>
   
   <div id="wrapper" class="grid clearfix">
       <div id="repoContainer">                
