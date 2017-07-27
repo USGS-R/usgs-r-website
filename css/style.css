@@ -142,6 +142,39 @@ p.nextToLink {
   color: #fff;
   border-radius: 5px 0 0 0;
 }
+
+#research h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #5063ce;
+}
+
+#support h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #ce8250;
+}
+
+#orphan h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #ef5760;
+}
+
+#core h4 {
+  padding: 5px 10px;
+  width: 170px;
+  color: #fff;
+  border-radius: 5px 0 0 0;
+  background: #46c124;
+}
+
 #newtoR h4 {
   background: #67ba2f;
 }
@@ -154,6 +187,7 @@ p.nextToLink {
 #featured_packages h4 {
   background: #003366;
 }
+
 #repoContainer {
   width: 100%;
   min-height: 100px;
@@ -195,7 +229,19 @@ p.nextToLink {
   border-right: 70px solid #003366;
   pointer-events: none;
 }
-.diffColor:after {
+.coreColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #46c124;
+  pointer-events: none;
+}
+.orphanColor:after {
   content: '';
   position: absolute;
   right: 0;
@@ -207,12 +253,36 @@ p.nextToLink {
   border-right: 70px solid #ef5760;
   pointer-events: none;
 }
+.researchColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #5063ce;
+  pointer-events: none;
+}
+.supportColor:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 70px solid transparent;
+  border-left: 70px solid transparent;
+  border-right: 70px solid #ce8250;
+  pointer-events: none;
+}
 p.underDevelopment {
   width: 75px;
   text-align: center;
   font-size: .65em !important;
   position: absolute;
-  top: 6px;
+  top: 12px;
   right: -20px;
   color: #fff;
   -ms-transform: rotate(45deg);
@@ -231,6 +301,10 @@ p.underDevelopment {
 .content h3 {
   padding: 5px 0 5px 10px;
   margin-bottom: -5px;
+}
+#plain ul li {
+    font-weight: 400;
+    font-size: 1.1em;
 }
 .content ul {
   list-style: square;
