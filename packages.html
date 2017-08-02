@@ -413,30 +413,21 @@ https://owi.usgs.gov/R/packages.html#support</span>
       
 <p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on whom to contact to volunteer to take over maintainer duties.</p>
 
-<div id="plain">
-<pre class="language-Rcode">
-<code class="language-Rcode">
-.onAttach <- function(libname, pkgname) {
-  packageStartupMessage(paste(strwrap(
-  <span class="string">'****Orphaned Package****: This
-  package is looking for a new maintainer. For more
-  information, see: https://owi.usgs.gov/R/packages.html#orphan'</span>)<span class="punctuation">,</span>
-  collapse=<span class="string">'\n'</span>))
-}
-</code>
-</pre>
+<p>The following disclaimer applies to all orphan packages that do not have an associated peer-reviewed article included in a CITATION file.</p>
 
-<p>Which will show the user:</p>
+<div id="plain"> 
+<h3>Disclaimer</h3>
 
-<pre class="language-Rcode">
-<code class="language-Rcode">
-library(smwrQW)
-<span class="string">****Orphaned Package****: 
-This package is looking for a new maintainer. 
-For more information, see:
-https://owi.usgs.gov/R/packages.html#orphan</span>
-</code>
-</pre>
+<p><i>This information is preliminary or provisional and
+is subject to revision. It is being provided to meet
+the need for timely best science. The information
+has not received final approval by the U.S. Geological
+Survey (USGS) and is provided on the condition that
+neither the USGS nor the U.S. Government shall be held
+liable for any damages resulting from the authorized
+or unauthorized use of the information. </i></p>
+<p><i>Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.</i></p>
+
 
 </div>
 
