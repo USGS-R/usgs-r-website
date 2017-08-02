@@ -147,7 +147,7 @@ names(GRAN_pkg[,1])
   <div id="plain">
             <ol class="granNumberList">
                 <li>Obtain, document, and address peer review of package using the <a href="https://my.usgs.gov/jira/browse/GITPILOT/">my.usgs JIRA system</a>. </li>
-                <li>Host your full package code on github.com (preferably within the USGS-R organization)</li>
+                <li>Host your full package code on GitHub (preferably within the USGS-R organization)</li>
                 <li><a href="https://help.github.com/articles/creating-releases/">Create a tagged release</a> of a stable version of your package on github.com</li>
                 <li>Ensure package builds and passes "as cran" checks with no warnings
                 
@@ -157,7 +157,7 @@ R CMD check --as-cran {packagename_version}.tar.gz
 </code>
 </pre>
 </li>
-                <li><a href="https://help.github.com/articles/fork-a-repo/">Fork</a> the USGS-R <code>grantools</code> to your USGS github account.</li>
+                <li><a href="https://help.github.com/articles/fork-a-repo/">Fork</a> the USGS-R <code>grantools</code> to your USGS GitHub account.</li>
                 <li>Add your package location and name (using the format <code>repository/packagename</code>) and tagged release name to the file <code>gran_source_list.tsv</code> </li>
                 <li>Create a pull request between your fork of grantools and the USGS-R version of grantools</li>
                 <li>Packages are expect to have zero Notes or Warnings on check. If you would like an exception, explain (in the pull request comments) why each Note and Warning should be allowed.</li>
@@ -175,7 +175,7 @@ R CMD check --as-cran {packagename_version}.tar.gz
             <ol  class="granNumberList">
                 <li>Required: Active tool maintainer with *@usgs.gov email address
 If a maintainer becomes inactive, the package will be removed.</li>
-                <li>Required: Code must be on Github USGS-R repository to facilitate the automation of tool builds, checks, and releases:</li>
+                <li>Required: Code must be on GitHub USGS-R repository to facilitate the automation of tool builds, checks, and releases:</li>
                 <ul>
                 <li>Required: Each GRAN update must be a Github "release". </li>
                 <li>Recommended: Continuous integration.</li>

@@ -95,7 +95,7 @@ For example:
       <li>Upstream R-package dependency change</li>
       <li>User support and troubleshooting</li>
     </ul>
-<p><i>We recommend that maintainers attempt to acknowledge the issue as soon as they are discovered via a standard public channel such as a GitHub Issue. Then, publically track the work, giving estimates of time and effort along the way.</i></p>
+<p><i>We recommend that maintainers attempt to acknowledge bugs and other issues as soon as they are discovered via a standard public channel such as a GitHub Issue. Then, publicly track the work, giving estimates of time and effort along the way.</i></p>
   <li>An active USGS employee is designated as maintainer</li>
   <li>Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer. This increases the <a href="https://en.wikipedia.org/wiki/Bus_factor">Bus Factor</a> ("many individuals know enough to carry on and the project could still succeed even in very adverse events").</li>
   <li>The package is well tested</li>
@@ -137,6 +137,19 @@ A user of USGS core packages can expect prompt feedback from bug reports and gen
               
               <p>Research packages have two distinct phases: Development and Archive. Published but still active packages can seamlessly flow between Archive and Development, with expectations that the relevant requirements from both categories are fulfilled.</p>
               
+<p>The following disclaimer applies to all research packages that do not have an associated peer-reviewed article included in a CITATION file.</p>
+  
+<h3>Disclaimer</h3>
+
+<p><i>This information is preliminary or provisional and
+is subject to revision. It is being provided to meet
+the need for timely best science. The information
+has not received final approval by the U.S. Geological
+Survey (USGS) and is provided on the condition that
+neither the USGS nor the U.S. Government shall be held
+liable for any damages resulting from the authorized
+or unauthorized use of the information. </i></p>
+<p><i>Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.</i></p>
                 
   <h3>Development</h3>
   
@@ -148,17 +161,7 @@ A user of USGS core packages can expect prompt feedback from bug reports and gen
 <div id="plain">
 <ul>
   <li>The package is in active development and there is no guarantee of future behavior.</li>
-  <li>An official disclaimer is shown on the README, and any vignettes:</li>
-<p><i>
-This information is preliminary or provisional and
-is subject to revision. It is being provided to meet
-the need for timely best science. The information
-has not received final approval by the U.S. Geological
-Survey (USGS) and is provided on the condition that
-neither the USGS nor the U.S. Government shall be held
-liable for any damages resulting from the authorized
-or unauthorized use of the information.  
-</i></p>
+  <li>An official disclaimer is shown on the README, and any vignette</li>
  <li>The package startup message needs to either include the above disclaimer, or link to this page:</li>
 <pre class="language-Rcode">
 <code class="language-Rcode">
@@ -221,7 +224,7 @@ library(toxEval)
 <span class="string">USGS Support Package: 
 https://owi.usgs.gov/R/packages.html#support
 Funding for toxEval expires summer 2017, 
-after which bugfixes & new features will be minimal
+after which bug fixes & new features will be minimal
 </span>
 </code>
 </pre>
@@ -266,11 +269,11 @@ after which bugfixes & new features will be minimal
       
               
               <h3>Archive</h3>
-<p>A package that has completed it's main development concluding with a published documnet can be archived. Archive packages have several key features:</p>
+<p>A package that has completed the main development concluding with a published document can be archived. Archive packages have several key features:</p>
 
 <div id="plain">
 <ul>
-  <li>Ideally, the development of the package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
+  <li>The development of the package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
   <li>A reproducible work-flow is included either within a vignette or via the final product (such as the journal article)</li>
   <li>There are no official expectations that bug fixes and R version upgrades will happen. The expectations need to be clearly communicated to the users</li>
   <li>The package maintainer should have an active email.</li>
@@ -311,6 +314,20 @@ It should be clearly communicated that the package has a well-documented final p
               <h4>Support</h4>
 <p>A package with the designation "Support" may not have a research component, and also may not be intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best-practices in the package development, as well as clearly communicate the intent and level of support for these packages. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
 
+<p>The following disclaimer applies to all support packages that do not have an associated peer-reviewed article included in a CITATION file.</p>
+  
+<h3>Disclaimer</h3>
+
+<p><i>This information is preliminary or provisional and
+is subject to revision. It is being provided to meet
+the need for timely best science. The information
+has not received final approval by the U.S. Geological
+Survey (USGS) and is provided on the condition that
+neither the USGS nor the U.S. Government shall be held
+liable for any damages resulting from the authorized
+or unauthorized use of the information. </i></p>
+<p><i>Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.</i></p>
+
 <div id="plain">
 <ul>
   <li>An active USGS employee is designated as maintainer. Development and maintenance of support packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
@@ -319,16 +336,6 @@ It should be clearly communicated that the package has a well-documented final p
   <li>The package should be tested on a continuous integration platform regularly. A few example continuous integration platform services are <a href="https://travis-ci.org/">Travis CI</a>, and <a href="https://www.appveyor.com/">AppVeyor</a></li>
   <li>Key functions should have clear documentation and working examples. </li>
   <li>An official disclaimer is shown on the README, and any vignettes:</li>
-<p><i>
-This information is preliminary or provisional and
-is subject to revision. It is being provided to meet
-the need for timely best science. The information
-has not received final approval by the U.S. Geological
-Survey (USGS) and is provided on the condition that
-neither the USGS nor the U.S. Government shall be held
-liable for any damages resulting from the authorized
-or unauthorized use of the information.  
-</i></p>
  <li>The package startup message needs to either include the above disclaimer, or link to this page:</li>
  
 <pre class="language-Rcode">
