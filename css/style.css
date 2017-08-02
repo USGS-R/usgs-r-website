@@ -302,7 +302,7 @@ p.underDevelopment {
   padding: 5px 0 5px 10px;
   margin-bottom: -5px;
 }
-#plain ul li {
+#plain {
     font-weight: 400;
     font-size: 1.1em;
 }
@@ -454,23 +454,13 @@ p.underDevelopment {
   margin-left: -5px;
 }
 pre {
-  overflow: auto;
+
   color: white;
   background: #f7f7f7;
   padding: 0;
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  -ms-word-break: break-word;
-  word-break: break-word;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
   position: relative;
-  margin: 15px 15px 15px -15px;
-  height: 100px;
-  border-radius: 5px;
+
 }
 pre code {
   font-family: 'Source Code Pro', Menlo, Consolas, Monaco, monospace;

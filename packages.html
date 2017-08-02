@@ -51,13 +51,13 @@
 <p>Clear communication about package expectations is very important. Package developers should be transparent about the maintenance, development, and user support associated with their package so that potential users are aware. To help with this communication for USGS R packages, we have created the following categories:</p>
 
 <ul>
-  <li><a href="#core">Core</a></li>
-  <li><a href="#research">Research</a></li>
-  <li><a href="#support">Support</a></li>
-  <li><a href="#orphan">Orphan</a></li>
+  <li><a href="#core">Core:</a> Widely used and carefully designed</li>
+  <li><a href="#research">Research:</a> More narrow usage and limited long-term support.</li>
+  <li><a href="#support">Support:</a> Limited users with high-impact needs.</li>
+  <li><a href="#orphan">Orphan:</a> Packages looking for a maintainer and support.</li>
 </ul>
 <p>
-Each is described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). See also the <a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/maintenance/">maintenance</a> section in our "R-package development" training:  for a deeper conversation on package considerations.
+Each is described in detail below. In general, they go from most support and outreach ("Core") to least ("Orphan"). See also the <a href="https://owi.usgs.gov/R/training-curriculum/r-package-dev/maintenance/">maintenance</a> section in our "R-package development" training:  for a deeper conversation on additional package considerations.
 
 </p>  
               
@@ -65,7 +65,7 @@ Each is described in detail below. In general, they go from most support and out
 		
       <section class="box content" id="core">
           
-              <h4>Core</h4>
+              <h4>USGS Core</h4>
 <p>
 A package with the designation "Core" has several key features:</p>
 
@@ -73,21 +73,40 @@ A package with the designation "Core" has several key features:</p>
 <ul>
   <li>Critically important to a wide and general audience</li>
   <li>Published, peer-reviewed documentation on the package</li>
-  <li>Long-term support addressed publicly (could be stated in README or elsewhere)</li>
-  <li>Rapid response to bug fixes</li>
-  <li>Rapid response to R version upgrades</li>
-  <li>Rapid response to R package dependency changes</li>
-  <li>User support and troubleshooting</li>
-  <li>An active USGS employee is designated as maintainer.</li>
-  <li>Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
-  <li>The package is well tested (for example, using <code>library(testthat)</code>).</li>
-  <li>The package should be tested on a continuous integration platform regularly. A few example continuous integration platform services are <a href="https://travis-ci.org/">Travis CI</a>, and <a href="https://www.appveyor.com/">AppVeyor</a>.</li>
-  <li>All external functions has clear documentation and working examples.</li>
+  <li>A statement of long-term support should be included in the README. This should communicate the source, timeline, and extent of support.</li>
+  <p><i>
+For example:
+<ol>
+  <li>
+    Source, e.g., "USGS Water Mission Area"
+  </li>
+  <li>
+    Timeline, e.g., "funding is stable through FY18 and is likely to be renewed into FY19 and beyond"
+  </li>
+  <li>
+    Extent,  e.g., "funding is available for new features, with priorities determined by the development team"   
+  </li>
+</ol>
+  </i></p>
+  <li>Reasonable effort to make prompt responses for the following:</li>
+    <ul>
+      <li>Bug fixes</li>
+      <li>R version upgrades</li>
+      <li>Upstream R-package dependency change</li>
+      <li>User support and troubleshooting</li>
+    </ul>
+<p><i>We recommend that maintainers attempt to acknowledge the issue as soon as they are discovered via a standard public channel such as a GitHub Issue. Then, publically track the work, giving estimates of time and effort along the way.</i></p>
+  <li>An active USGS employee is designated as maintainer</li>
+  <li>Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer. This increases the <a href="https://en.wikipedia.org/wiki/Bus_factor">Bus Factor</a> ("many individuals know enough to carry on and the project could still succeed even in very adverse events").</li>
+  <li>The package is well tested</li>
+<p><i>For example, all critical functions should be tested for expected results using the <a href="https://cran.r-project.org/package=testthat">testthat</a> package. The coverage of testing can be measured using the <a href="https://coveralls.io/">coveralls</a> or <a href="https://codecov.io/">codecov</a> services.</i></p>
+  <li>The package should be tested on a continuous integration platform regularly. A few example continuous integration platform services are <a href="https://travis-ci.org/">Travis CI</a>, and <a href="https://www.appveyor.com/">AppVeyor</a></li>
+  <li>All external functions have clear documentation and working examples</li>
 </ul>
 </div>
 
 <p>
-A user of core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, give careful thought to adding new features). The general scope of the package should not change over time.  </p>            
+A user of USGS core packages can expect prompt feedback from bug reports and general-use questions. Users can expect smooth transitions of maintainers since the package is well-tested, well-documented, and multiple developers have collaborated on the project. Enhancements should be carefully considered, "scope-creep" should be actively avoided (that is, give careful thought to adding new features). The general scope of the package should not change over time.</p>            
               
 <h3>Example Core Packages</h3>
   
@@ -116,22 +135,97 @@ A user of core packages can expect prompt feedback from bug reports and general-
           
               <h4>Research</h4>
               
-              <p>Research packages have three distinct phases: Exploratory, Active, and Archive. Published but still active packages can seamlessly flow between Active and Archive, with expectations that the relevant requirements from both categories are fulfilled.</p>
+              <p>Research packages have two distinct phases: Development and Archive. Published but still active packages can seamlessly flow between Archive and Development, with expectations that the relevant requirements from both categories are fulfilled.</p>
               
                 
-  <h3>Exploratory</h3>
+  <h3>Development</h3>
+  
   <p>Package development may include an exploratory phase when it's unclear whether an idea will ever become an active, publicly supported package. These packages should remain on personal github repositories or local computers. These packages offer value to only a small number of people for a limited time.</p>
               
-              <h3>Active</h3>
-<p>A package with the designation “Active Research” has several key features:</p>
+
+<p>A more mature package during active development has several key features:</p>
 
 <div id="plain">
 <ul>
   <li>The package is in active development and there is no guarantee of future behavior.</li>
-  <li>An official disclaimer is shown on the README and package startup message.</li>
-  <li>The development of the package is being driven by a research topic, and includes input from both researchers and software developers.</li>
+  <li>An official disclaimer is shown on the README, and any vignettes:</li>
+<p><i>
+This information is preliminary or provisional and
+is subject to revision. It is being provided to meet
+the need for timely best science. The information
+has not received final approval by the U.S. Geological
+Survey (USGS) and is provided on the condition that
+neither the USGS nor the U.S. Government shall be held
+liable for any damages resulting from the authorized
+or unauthorized use of the information.  
+</i></p>
+ <li>The package startup message needs to either include the above disclaimer, or link to this page:</li>
+<pre class="language-Rcode">
+<code class="language-Rcode">
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(paste(strwrap(
+  <span class="string">'USGS Research Package: 
+  https://owi.usgs.gov/R/packages.html#research'</span>)<span class="punctuation">,</span>
+  collapse=<span class="string">'\n'</span>))
+}
+</code>
+</pre>
+
+<p>Which will show the user:</p>
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+library(toxEval)
+<span class="string">USGS Research Package: 
+https://owi.usgs.gov/R/packages.html#research</span>
+</code>
+</pre>
+  <li>The development of the package is being driven by a research topic, and should include input from both researchers and software developers.</li>
   <li>The end goal should be one or more peer-reviewed journal publications.</li>
-  <li>A "sunset" date should be communicated on the README and package startup message. This is an indication of how far in the future the work for this package is currently supported.</li>
+  <li>A statement of support should be included in the README. This should communicate the source, timeline, and extent of support.</li>
+  <p><i>
+For example:
+<ol>
+  <li>
+    Source, e.g., "Water Mission Area"
+  </li>
+  <li>
+    Timeline, e.g., "funding is stable through FY17 and might be renewed into FY18 and beyond"
+  </li>
+  <li>
+    Extent,  e.g., "funding is available for new features, with priorities determined by the development team" or "support is primarily for maintenance rather than new features" or "support covers maintenance and bug fixes, but we're awfully short on time for user questions, sorry"   
+  </li>
+</ol>
+  </i></p>
+  <li>It is encouraged to include a "sunset" date in the README or package startup message.</li>
+  
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(paste(strwrap(
+  <span class="string">'USGS Research Package: 
+https://owi.usgs.gov/R/packages.html#research
+Funding for toxEval expires summer 2017, 
+after which bug fixes & new features will be minimal'</span>)<span class="punctuation">,</span>
+  collapse=<span class="string">'\n'</span>))
+}
+</code>
+</pre>
+
+<p>Which will show the user:</p>
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+library(toxEval)
+<span class="string">USGS Support Package: 
+https://owi.usgs.gov/R/packages.html#support
+Funding for toxEval expires summer 2017, 
+after which bugfixes & new features will be minimal
+</span>
+</code>
+</pre>
+  
   <li>Emphasis should still be placed on testing key features and good documentation during development.</li>
   <li>Since the goal is a published article, the expectation should be that outside users will use this package to test the reproducibility of the primary author’s data analysis, as well as reproducing the analysis on new data.</li>
   <li>During development, the package version should remain below v1.0.0.</li>
@@ -140,7 +234,7 @@ A user of core packages can expect prompt feedback from bug reports and general-
 
 <p>It is important to clearly communicate to any known or unknown users the risk they take with using a package that is in the active research development phase. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
       
-      <h3>Example Active Research Packages</h3>
+      <h3>Example Research Packages</h3>
   <div id="wrapper" class="grid clearfix">
       <div id="repoContainer">
           <a href="https://github.com/USGS-R/streamMetabolizer" target="_blank">
@@ -172,14 +266,13 @@ A user of core packages can expect prompt feedback from bug reports and general-
       
               
               <h3>Archive</h3>
-<p>A package with the designation “Archive Research” has several key features:</p>
+<p>A package that has completed it's main development concluding with a published documnet can be archived. Archive packages have several key features:</p>
 
 <div id="plain">
 <ul>
-  <li>Ideally, the development of the active research package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
+  <li>Ideally, the development of the package was completed with the publishing of a scientific, peer-reviewed journal or report</li>
   <li>A reproducible work-flow is included either within a vignette or via the final product (such as the journal article)</li>
-  <li>A message on the README indicates the archive status.</li>
-  <li>There are no official expectations that bug fixes and R version upgrades will happen.</li>
+  <li>There are no official expectations that bug fixes and R version upgrades will happen. The expectations need to be clearly communicated to the users</li>
   <li>The package maintainer should have an active email.</li>
   <li>The package version should be updated to v1.0.0 once a stable version is released.</li>
   <li>Once the final version is released, the maintainer should provide the output of <code>devtools::session_info()</code> for an archive of the environment in which the code was last tested and verified as stable.</li>
@@ -216,14 +309,49 @@ It should be clearly communicated that the package has a well-documented final p
       <section class="box content" id="support">
           
               <h4>Support</h4>
-<p>A package with the designation "Support" may not have a research component, and also may not be intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best practices in the package development, as well as clearly communicate the intent and level of support for these packages. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
+<p>A package with the designation "Support" may not have a research component, and also may not be intended for a wide, general audience. However, these packages may be critically important to other projects throughout the USGS. Therefore, it is important to follow best-practices in the package development, as well as clearly communicate the intent and level of support for these packages. See <code>?packageStartupMessage</code> to learn how to add a message to that gets displayed whenever a user loads the package.</p>
 
 <div id="plain">
 <ul>
-  <li>An active USGS employee is designated as maintainer. Development and maintenance of core packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
-  <li>The package is well tested (for example, using <code>library(testthat)</code>).</li>
-  <li>The package should be tested on a continuous integration platform regularly. A few example continuous integration platform services are <a href="https://travis-ci.org/">Travis CI</a>, and <a href="https://www.appveyor.com/">AppVeyor</a>.</li>
+  <li>An active USGS employee is designated as maintainer. Development and maintenance of support packages should include a team of developers. Maintainers coordinate and lead the development team, but should not be the sole developer.</li>
+  <li>The package is well tested</li>
+<p><i>For example, all critical functions should be tested for expected results using the <a href="https://cran.r-project.org/package=testthat">testthat</a> package. The coverage of testing can be measured using the <a href="https://coveralls.io/">coveralls</a> or <a href="https://codecov.io/">codecov</a> services.</i></p>
+  <li>The package should be tested on a continuous integration platform regularly. A few example continuous integration platform services are <a href="https://travis-ci.org/">Travis CI</a>, and <a href="https://www.appveyor.com/">AppVeyor</a></li>
   <li>Key functions should have clear documentation and working examples. </li>
+  <li>An official disclaimer is shown on the README, and any vignettes:</li>
+<p><i>
+This information is preliminary or provisional and
+is subject to revision. It is being provided to meet
+the need for timely best science. The information
+has not received final approval by the U.S. Geological
+Survey (USGS) and is provided on the condition that
+neither the USGS nor the U.S. Government shall be held
+liable for any damages resulting from the authorized
+or unauthorized use of the information.  
+</i></p>
+ <li>The package startup message needs to either include the above disclaimer, or link to this page:</li>
+ 
+<pre class="language-Rcode">
+<code class="language-Rcode">
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(paste(strwrap(
+  <span class="string">'USGS Support Package: 
+  https://owi.usgs.gov/R/packages.html#support'</span>)<span class="punctuation">,</span>
+  collapse=<span class="string">'\n'</span>))
+}
+</code>
+</pre>
+
+<p>Which will show the user:</p>
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+library(smwrGraphs)
+<span class="string">USGS Support Package: 
+https://owi.usgs.gov/R/packages.html#support</span>
+</code>
+</pre>
+
 </ul>
 </div>
 
@@ -276,12 +404,39 @@ It should be clearly communicated that the package has a well-documented final p
           
       <h4>Orphan</h4>
       
-<p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, and emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on whom to contact to volunteer to take over maintainer duties.</p>
+<p>A package with the designation "Orphan" does not have an active USGS employee designated as maintainer. The odds of a package becoming orphaned can be minimized during the package-creation phase by using a team of developers to collaborate, emphasizing clear documentation and high test-coverage. Community efforts to troubleshoot issues and submit bug-fixes are encouraged. Orphan packages should include some communication on both the readme and package startup message that the status is "orphan" and information on whom to contact to volunteer to take over maintainer duties.</p>
+
+<div id="plain">
+<pre class="language-Rcode">
+<code class="language-Rcode">
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(paste(strwrap(
+  <span class="string">'****Orphaned Package****: This
+  package is looking for a new maintainer. For more
+  information, see: https://owi.usgs.gov/R/packages.html#orphan'</span>)<span class="punctuation">,</span>
+  collapse=<span class="string">'\n'</span>))
+}
+</code>
+</pre>
+
+<p>Which will show the user:</p>
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+library(smwrQW)
+<span class="string">****Orphaned Package****: 
+This package is looking for a new maintainer. 
+For more information, see:
+https://owi.usgs.gov/R/packages.html#orphan</span>
+</code>
+</pre>
+
+</div>
 
 <p>
-Training from USGS-sponsored courses should avoid orphan packages until they have designated an active maintainer and have addressed long-term resource commitments. </p>             
- 
-<h3>Orphan Packages</h3>
+Training from USGS-sponsored courses should avoid orphan packages until they have designated an active maintainer and have addressed long-term resource commitments. </p>         
+
+<h3>Current Orphan Packages</h3>
   <p>If you are interested in taking over maintainer status for any of the following packages, please email <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a>. USGS-R admins will make a strong effort to communicate the status of orphan packages.</p>
   
   <div id="wrapper" class="grid clearfix">

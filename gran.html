@@ -144,6 +144,7 @@ names(GRAN_pkg[,1])
                 which should be completed before submitting a package to GRAN. Assuming a package is compliant, follow the steps for submission below:
                           </p>
   
+  <div id="plain">
             <ol class="granNumberList">
                 <li>Obtain, document, and address peer review of package using the <a href="https://my.usgs.gov/jira/browse/GITPILOT/">my.usgs JIRA system</a>. </li>
                 <li>Host your full package code on github.com (preferably within the USGS-R organization)</li>
@@ -162,7 +163,7 @@ R CMD check --as-cran {packagename_version}.tar.gz
                 <li>Packages are expect to have zero Notes or Warnings on check. If you would like an exception, explain (in the pull request comments) why each Note and Warning should be allowed.</li>
                 <li>Receive a notification once your package has been added (usually within one day).</li>
             </ol>
-            
+           </div> 
         </section>
         
         <section class="box content">
@@ -170,6 +171,7 @@ R CMD check --as-cran {packagename_version}.tar.gz
             <h3>What are the GRAN guidelines?<a id="gran_policy"></a></h3>
             
             <p>
+              <div id="plain">
             <ol  class="granNumberList">
                 <li>Required: Active tool maintainer with *@usgs.gov email address
 If a maintainer becomes inactive, the package will be removed.</li>
@@ -179,15 +181,42 @@ If a maintainer becomes inactive, the package will be removed.</li>
                 <li>Recommended: Continuous integration.</li>
                 <li>Recommended: Maintainer will use Github issues system for issue/bug reporting and tracking. </li>
                 </ul>
-                <li>Required: All packages must print the OWI GRAN Software disclaimer<sup>A</sup> describing nature of preliminary code upon initial load, unless tool has an associated peer-reviewed publication and citation. </li>
+                <li>Required: All packages must either print the <a href="#disclaimer">OWI GRAN Software disclaimer<sup>A</sup></a> or a link to the appropriate <a href="packages.html">package category</a>. This is only required for packages that <b>do not</b> have an associated peer-reviewed publication and citation. For example: </li>
+<pre class="language-Rcode">
+<code class="language-Rcode">
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage(paste(strwrap(
+  <span class="string">'USGS Support Package: 
+  https://owi.usgs.gov/R/packages.html#support'</span>)<span class="punctuation">,</span>
+  collapse=<span class="string">'\n'</span>))
+}
+</code>
+</pre>
+
+<p>Which will show the user:</p>
+
+<pre class="language-Rcode">
+<code class="language-Rcode">
+library(smwrGraphs)
+<span class="string">USGS Support Package: 
+https://owi.usgs.gov/R/packages.html#support</span>
+</code>
+</pre>
                 <li>Required: All packages with a peer-reviewed publication must include proper reference in the package "CITATION" file.</li>
+<p><i>Once a CITATION is included, there is no requirement for the package startup message as described above.</i></p>
                 <li>Initial code import and updates are handled through pull requests to "grantools". New GRAN users should contact  <a href="mailto:gs-w_r_admin@usgs.gov">&lt;gs-w_r_admin@usgs.gov&gt;</a> for support with initial release of software.</li>
                 <li>Binary packages will be maintained for only the current release version of R.</li>
                 <li>
-                  Package maintainers are expected to understand and follow the policies of the USGS for code distribution. <a href="http://water.usgs.gov/admin/memo/policy/wrdpolicy09.01.html">Water Policy 2009.01</a>
+                  Package maintainers are expected to understand and follow the policies of the USGS for code distribution. <a href="http://water.usgs.gov/admin/memo/policy/wrdpolicy09.01.html">Water Policy 2009.01</a> and <a href="https://www2.usgs.gov/usgs-manual/im/IM-OSQI-2016-01.html">Review and Approval of Software for Release</a>.
                 </li>
+                <li>USGS best practices for software are described <a href="https://github.com/usgs/best-practices/tree/master/software">here</a>.</li>
 </ol>
+</div>
 </p>
+
+</section>
+
+<section class="box content" id="disclaimer">
 <p><sup>A</sup> OWI GRAN Software disclaimer: This information is preliminary or provisional and is subject to revision. It is being provided to meet the need for timely best science. The information has not received final approval by the U.S. Geological Survey (USGS) and is provided on the condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the information. 
     Although this software program has been used by the U.S. Geological Survey (USGS), no warranty, expressed or implied, is made by the USGS or the U.S. Government as to the accuracy and functioning of the program and related program material nor shall the fact of distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.
   
