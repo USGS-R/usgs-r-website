@@ -1,6 +1,11 @@
 # convert R Training scheduled trainings from Google Sheets into JSON 
 # in order to use on the OWI-R website
 
+# run these lines to save the google token before running this 
+  # token <- gs_auth(new_user=T)
+  # saveRDS(token, file = 'googlesheets_token.rds')
+  # token <- 'googlesheets_token.rds'
+
 # To update the files: 
 # 1. Set working directory to usgs-r-website, ex. setwd("C:/Users/lcarr/usgs-r-website")
 # 2. Run this script. 
