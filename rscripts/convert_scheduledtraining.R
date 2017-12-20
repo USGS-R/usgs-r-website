@@ -9,7 +9,9 @@
 # To update the files: 
 # 1. Set working directory to usgs-r-website, ex. setwd("C:/Users/lcarr/usgs-r-website")
 # 2. Run this script. 
-# 3. In Git Bash, 
+# 3. Fetch changes from upstream, commit your local changes to scheduledtrainings.json, and 
+#    push those changes to your fork of usgs-r-website. This could be done in Git Bash 
+#    by running:
 #       cd usgs-r-website
 #       git fetch upstream
 #       git merge upstream/master
@@ -17,6 +19,7 @@
 #       git add json/scheduledtrainings.json
 #       git commit -m "MESSAGE"
 #       git push
+# 4. Submit a pull request
 
 library(googlesheets)
 library(dplyr)
