@@ -56,7 +56,7 @@ crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>")
 sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
 nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>18 Attendees</p>");
 cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>7 Attendees</p><p>7 Attendees</p>");
-pkgdev.bindPopup("<h4>Workshops at the Wisconsin Water Science Center in Middleton, WI<p>7 attendees (R Package Development)</br>18 Attendees (Intro to R)</p>");
+pkgdev.bindPopup("<h4>Workshops at the Wisconsin Water Science Center in Middleton, WI<p>7 attendees (R Package Development)</br>18 attendees (Intro to R)</p>");
 reston.bindPopup("<h4>R Workshop for Beginners at the USGS National Center in Reston, VA</h4><p>20 Attendees</p>");
 ndwsc.bindPopup("<h4>R Workshop for Beginners at the North Dakota Water Science Center in Bismarck, ND</h4><p>7 Attendees</p>");
 cawsc.bindPopup("<h4>R Workshop for Beginners at the California Water Science Center in Sacramento, CA</h4><p>21 Attendees</p>");
