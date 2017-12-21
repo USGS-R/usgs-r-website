@@ -39,6 +39,9 @@ var sawscnc = L.marker([35.779142, -78.638706], {icon: blueIcon}).addTo(map);
 var nycdep = L.marker([41.926718, -73.996485], {icon: blueIcon}).addTo(map);
 var cdi = L.marker([39.715289, -105.110882], {icon: blueIcon}).addTo(map);
 var pkgdev = L.marker([43.092400, -89.532186], {icon: blueIcon}).addTo(map);
+var reston = L.marker([38.946940, -77.367391], {icon: blueIcon}).addTo(map);
+var ndwsc = L.marker([46.832448, -100.778977], {icon: blueIcon}).addTo(map);
+var cawsc = L.marker([38.607620, -121.498086], {icon: blueIcon}).addTo(map);
 
 //Popups for past event locations
 flwsc.bindPopup("<h4>Florida Water Science Center</h4><p>11 Attendees</p>");
@@ -52,18 +55,22 @@ lmgwscar.bindPopup("<h4>Lower-Mississippi Gulf Water Science Center in Little Ro
 crrl.bindPopup("<h4>Columbia River Research Laboratory</h4><p>21 Attendees</p>");
 sawscnc.bindPopup("<h4>South Atlantic Water Science Center in Raleigh, NC</h4><p>17 Attendees</p>");
 nycdep.bindPopup("<h4>New York Water Science Center & NYC Department of Environmental Protection in Kingston, NY</h4><p>18 Attendees</p>");
-cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>7 Attendees</p>");
-pkgdev.bindPopup("<h4>R Package Development Workshop in Middleton, WI</h4><p>6 Attendees</p>");
+cdi.bindPopup("<h4>R Workshop for Beginners in Denver, CO</h4><p>7 Attendees</p><p>7 Attendees</p>");
+pkgdev.bindPopup("<h4>Workshops at the Wisconsin Water Science Center in Middleton, WI<p>7 attendees (R Package Development)</br>18 attendees (Intro to R)</p>");
+reston.bindPopup("<h4>R Workshop for Beginners at the USGS National Center in Reston, VA</h4><p>20 Attendees</p>");
+ndwsc.bindPopup("<h4>R Workshop for Beginners at the North Dakota Water Science Center in Bismarck, ND</h4><p>7 Attendees</p>");
+cawsc.bindPopup("<h4>R Workshop for Beginners at the California Water Science Center in Sacramento, CA</h4><p>21 Attendees</p>");
+
 
 //Marker locations for future events
-var reston = L.marker([38.946940, -77.367391], {icon: redIcon}).addTo(map);
+
 
 //Popups for future event locations 
-reston.bindPopup("<h4>Intro to R in Reston, VA</h4><p>August 29-31, 2017</p>");
+
 
 //Grouping icons for layer switcher
 var hasBeens = L.layerGroup([flwsc, nmwsc, egsc, mtwsc, fort, tampa, lmgwsctn, lmgwscar, crrl, sawscnc, nycdep, cdi, pkgdev]).addTo(map);
-var willBe = L.layerGroup([reston]).addTo(map);
+var willBe = L.layerGroup([]).addTo(map);
 
 //Map tile
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
