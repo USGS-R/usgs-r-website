@@ -10,9 +10,9 @@ output:
 # saveRDS(token, file = 'googlesheets_token.rds')
 token <- 'googlesheets_token.rds'
 
-whichTraining <- "NYC DEP, Kingston, NY (04/11/2017 thru 04/13/2017)"
+whichTraining <- "Denver, CO (5/1/2018 thru 5/3/2018)"
 isPre <- TRUE
-isPost <- FALSE
+isPost <- TRUE
 isInstructorReport <- TRUE
 isProjectTime <- TRUE
 ```
@@ -177,7 +177,7 @@ get_links(links_post, 'any-additional-feedback')
 #### `r if(isPre){ "How much experience do you have in R?" }`
 
 ```{r pre_experience, echo=FALSE, eval=isPre, message=FALSE, warning=FALSE, fig.height=4, fig.width=8}
-browser()
+
 pie_data <- table(course_feedback_pre$How.much.experience.do.you.have.in.R.)
 lbls <- paste(names(pie_data), "\n", pie_data, sep="")
 pie(pie_data, labels = lbls, border = NA, col = c('dodgerblue2', 'firebrick2', 
